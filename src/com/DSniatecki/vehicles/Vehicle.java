@@ -27,6 +27,9 @@ public class Vehicle {
 		}
 
 		public void showInfo(int vehicleNumber) {
+			System.out.println("====================================================");
+			System.out.println("                  Vehicle : " + vehicleNumber);
+			System.out.println("----------------------------------------------------");
 			System.out.println("[ "+ ID + " ][ " + brand +" " + model +" ]");
 			System.out.println(" - year of production         : "+ productionYear);
 			System.out.println(" - mileage                    : "+ mileage + " km ");
@@ -38,6 +41,8 @@ public class Vehicle {
 		}
 		
 		public void setInfo(Scanner input) {
+			System.out.println();
+			System.out.println("====================================================");
 			System.out.println(" Podaj ponizsze dane dotyczace tego pojazdu : ");
 			System.out.print(" - marka                      : ");
 			brand           = input.nextLine();

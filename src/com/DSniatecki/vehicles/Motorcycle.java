@@ -24,16 +24,9 @@ public class Motorcycle extends Vehicle{
 		ID2++;
 		super.setID("M." + ID2);
 		
-		if((typeOfSeat < 1 || typeOfSeat > 2 ) && weight != 0) {
-			System.out.println("# Warning !!! #[ " + getID() + " This object has na incorrect seat type ]# Warning !!! #");
-		}
 	}
 
 	public void showInfo(int vehicleNumber) {
-	
-		System.out.println("====================================================");
-		System.out.println("                  Vehicle :" + vehicleNumber);
-		System.out.println("----------------------------------------------------");
 		super.showInfo(vehicleNumber);
 		System.out.println(" - type of motorcycle         : " + motorcycleType );
 		System.out.println(" - seat capacity              : " + typeOfSeat + " person(s) ");
@@ -42,9 +35,6 @@ public class Motorcycle extends Vehicle{
 	}
 
 	public void setInfo(Scanner input) {
-		input = new Scanner(System.in);
-		System.out.println();
-		System.out.println("====================================================");
 		super.setInfo(input);
 		input = new Scanner(System.in);
 		System.out.print(" - type of motorcycle         : ");
@@ -54,8 +44,7 @@ public class Motorcycle extends Vehicle{
 		System.out.println("====================================================");	
 	}
 	
-	static {
-	
+	static {	
 		ID2=0;
 	}
 

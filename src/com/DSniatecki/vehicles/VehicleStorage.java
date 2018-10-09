@@ -26,8 +26,7 @@ public class VehicleStorage {
 		ID = "VS." + ID2;
 		this.adress = adress;
 	}
-	
-	
+
 	
 	public void showInfo(int storageNumber) {
 		System.out.println("====================================================");
@@ -48,39 +47,49 @@ public class VehicleStorage {
 		System.out.println("====================================================");
 	}
 	
-	
-	
 	private void addCar(Scanner input){
 		myVehicle.add(new Car());
 		myVehicle.get(myVehicle.size()-1).setInfo(input);
+		input.nextLine();
 	}
 	
 	private void addMotorcycle(Scanner input) {
 		
 		myVehicle.add(new Motorcycle());
 		myVehicle.get(myVehicle.size()-1).setInfo(input);
+		input.nextLine();
 	}
 	
 	public  void removeVehicle(Scanner input) {
-		System.out.println();
-		System.out.println("====================================================");
-		int choice = MyScan.scanInt(input, "Podaj numer pojazdu ktory chcesz usunac : ");
-		System.out.println("====================================================");
-		
-		if(( choice > 0 ) && ( choice <= myVehicle.size() )) {
-			myVehicle.remove(choice-1);
-		}
-		else{
+		if( myVehicle.size() > 0) {	
 			System.out.println();
-			System.out.println(" >> Nie znaleziono pojazdu o takim numerze << ");
-			input = new Scanner(System.in);
+			System.out.println("====================================================");
+			int choice = MyScan.scanInt(input, "Podaj numer pojazdu ktory chcesz usunac : ");
+			System.out.println("====================================================");
+		
+			if(( choice > 0 ) && ( choice <= myVehicle.size() )) {
+				myVehicle.remove(choice-1);
+				System.out.println();
+				System.out.println("[ Storage " + choice + ". was successfully removed ]");
+			}
+			else{
+				System.out.println();
+				System.out.println(" >> Nie znaleziono pojazdu o takim numerze << ");			
+			}
+			input.nextLine();
+			MyView.waitUntil(input);	
+		}
+		else {
+			System.out.println();
+			System.out.println("------------------------------------------------");
+			System.out.println("-- You do not have any Vehicle in this garage --");
+			System.out.println("------------------------------------------------");
 			MyView.waitUntil(input);
 		}
-			
 	}
 	
 	
-	public void showMenu() {
+	public void showGarageMenu() {
 		System.out.println("[ Welcome in Garage menu. Press :   ]");
 		System.out.println();
 		System.out.println(" \"s\" - to display all vehicles in this garage ");
@@ -93,61 +102,44 @@ public class VehicleStorage {
 	}
 	
 	public void execute(Scanner input) {
-		input = new Scanner(System.in);
 		
 		String userChoice;
 		do {
-			MyView.clearScreen();
-			
-			showMenu();
-			userChoice = input.nextLine();
-			
-			MyView.clearScreen();
+			MyView.clearScreen(input);
+			showGarageMenu();
+			userChoice = input.nextLine();	
+			MyView.clearScreen(input);
 			
 			switch(userChoice) {
-				case "s" :
-					showAllVehicles();
-					MyView.waitUntil(input);
-					break;
-				case "c" :
-					addCar(input);
-					break;
-				case "m" :
-					addMotorcycle(input);
-					break;
-				case "r" :
-					removeVehicle(input);
-					input = new Scanner(System.in);
-					break;
-				case "b" :
-					break;
+				case "s" :			showAllVehicles(input);			break;
+				case "c" :			addCar(input);					break;
+				case "m" :			addMotorcycle(input);			break;
+				case "r" :			removeVehicle(input);			break;
+				case "b" :											break;
 				default  :
 					System.out.println();
 					System.out.println("[ Prosze wybrac jedna z pozycji z menu magazynu !!! ]");
 					MyView.waitUntil(input);
 					break;
-			
-			
 			}
-		
-		
 		}while(!userChoice.equals("b"));
 	}
 	
 	
-	public void showAllVehicles() {
+	public void showAllVehicles(Scanner input) {
 		System.out.println("");
+		
 		if(myVehicle.size() != 0) {
-			for(int i=0; i < myVehicle.size(); i++) {
-				myVehicle.get(i).showInfo(i+1);
-			}	
+			for(int i=0; i < myVehicle.size(); i++)
+				myVehicle.get(i).showInfo(i+1);	
 		}
 		else {
 			System.out.println("------------------------------------------------");
 			System.out.println("-----  There is no vehicle in this garage  -----");
 			System.out.println("------------------------------------------------");
 		}
-	
+		
+		MyView.waitUntil(input);
 	}
 	
 	static {

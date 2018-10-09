@@ -31,9 +31,6 @@ public class Car extends Vehicle{
 	}
 
 	public void showInfo(int vehicleNumber) {
-		System.out.println("====================================================");
-		System.out.println("                  Vehicle :" + vehicleNumber);
-		System.out.println("----------------------------------------------------");
 		super.showInfo(vehicleNumber);
 		System.out.println(" - fueltype                   : " + FuelType);
 		System.out.println(" - type of body               : " + bodyType);
@@ -43,22 +40,18 @@ public class Car extends Vehicle{
 	}
 	
 	public void setInfo(Scanner input) {
-		input = new Scanner(System.in);
-		System.out.println();
-		System.out.println("====================================================");
 		super.setInfo(input);
 		input = new Scanner(System.in);
 		System.out.print(" - type of body [e.g. coupe ] : ");
-		bodyType =  input.nextLine();
+		bodyType    =  input.nextLine();
 		System.out.print(" - fueltype [petrol/diesel]   : ");
-		FuelType =  input.nextLine();
+		FuelType    =  input.nextLine();
 		length      = MyScan.scanInt(input," - dlugosc [ mm ]             : ");
 		doorsNumber = MyScan.scanInt(input," - ilosc drzwi                : ");
 		System.out.println("====================================================");
 	}
 
-	static {
-		
+	static {	
 		ID2=0;
 	}
 
