@@ -39,9 +39,26 @@ public class MainVehiclesStorage {
 					myStorage.get( myStorage.size() - 1 ).setInfo(input);
 					MyView.waitUntil(input);
 					break;
-				case "l" :
+				case "o" :
 					if( myStorage.size() > 0) {
-						myStorage.get(myStorage.size()-1).execute(input);
+						int choice=0;
+						
+						System.out.println("====================================================");
+						choice = MyScan.scanInt(input, "Podaj numer magazynu do ktorego chcesz przejsc : ");     
+						System.out.println("====================================================");
+						
+						if(( choice > 0 ) && ( choice <= myStorage.size() )) 
+						{
+							myStorage.get(choice-1).execute(input);
+							input = new Scanner(System.in);
+						}
+						else
+						{
+							System.out.println();
+							System.out.println(" >> Nie znaleziono magazynu o takim numerze << ");		
+							input = new Scanner(System.in);
+							MyView.waitUntil(input);		
+						}
 					}
 					else {
 						System.out.println();
@@ -50,16 +67,22 @@ public class MainVehiclesStorage {
 						System.out.println("------------------------------------------------");
 						MyView.waitUntil(input);
 					}	
+					
 					break;
 				case "t" :
 					MyTime.showCurrentTime();
 					MyView.waitUntil(input);
 					break;
+				case "r" :
+					removeStorage();
+					break;
 				case "Q" :
 					break;
-				default  :
+				
+				default:
 					System.out.println();
 					System.out.println("[ Prosze wybrac jedna z pozycji z glownego menu !!! ]");
+					input = new Scanner(System.in);
 					MyView.waitUntil(input);
 					break;
 			}
@@ -71,26 +94,52 @@ public class MainVehiclesStorage {
 
 	}
 	
+	public static void removeStorage() {
+		
+		int choice=0;
+		
+		System.out.println("====================================================");
+		choice = MyScan.scanInt(input, "Podaj numer magazynu ktory chcesz usunac : ");
+		System.out.println("====================================================");
+		
+		
+		if(( choice > 0 ) && ( choice <= myStorage.size() )) 
+		{
+			myStorage.remove(choice-1);
+			input = new Scanner(System.in);
+		}
+		else
+		{
+			System.out.println();
+			System.out.println(" >> Nie znaleziono magazynu o takim numerze << ");		
+			
+			input = new Scanner(System.in);
+			MyView.waitUntil(input);		
+		}
+			
+	}
+
 	public static void showMenu() {
 		System.out.println("[ Welcome in Main menu . Press :   ]");
 		System.out.println();
 		System.out.println(" \"s\" - to display all Storages ");
 		System.out.println(" \"c\" - to create a new Storage ");
-		System.out.println(" \"l\" - to go into last Storage menu");
+		System.out.println(" \"o\" - to open selected storage menu");
 		System.out.println(" \"t\" - to show current time");
+		System.out.println(" \"r\" - to remove selected storage");
 		System.out.println(" \"Q\" - to exit program");
 		System.out.println();
 		System.out.print(">> Your choice : ");
 	}	
 	
 	public static void showAllStorages() {
+		System.out.println();
 		if( myStorage.size() > 0) {
-			for(VehicleStorage x : myStorage) {
-				x.showInfo();
+			for(int i=0; i < myStorage.size(); i++) {
+				myStorage.get(i).showInfo(i+1);
 			}	
 		}
 		else {
-			System.out.println();
 			System.out.println("------------------------------------------------");
 			System.out.println("-------  You do not have any warehouse  --------");
 			System.out.println("------------------------------------------------");

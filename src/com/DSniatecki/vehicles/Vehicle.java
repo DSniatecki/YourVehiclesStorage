@@ -26,7 +26,7 @@ public class Vehicle {
 			this.weight = weight;
 		}
 
-		public void showInfo() {
+		public void showInfo(int vehicleNumber) {
 			System.out.println("[ "+ ID + " ][ " + brand +" " + model +" ]");
 			System.out.println(" - year of production         : "+ productionYear);
 			System.out.println(" - mileage                    : "+ mileage + " km ");

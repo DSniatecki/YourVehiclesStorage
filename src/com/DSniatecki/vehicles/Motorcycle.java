@@ -29,27 +29,29 @@ public class Motorcycle extends Vehicle{
 		}
 	}
 
-	public void showInfo() {
+	public void showInfo(int vehicleNumber) {
 	
-		System.out.println("------------------------------------------------");
-		super.showInfo();
+		System.out.println("====================================================");
+		System.out.println("                  Vehicle :" + vehicleNumber);
+		System.out.println("----------------------------------------------------");
+		super.showInfo(vehicleNumber);
 		System.out.println(" - type of motorcycle         : " + motorcycleType );
 		System.out.println(" - seat capacity              : " + typeOfSeat + " person(s) ");
 		System.out.println(" - 0-100 kmh time             : " + accelerationTime + " seconds");
-		System.out.println("------------------------------------------------");
+		System.out.println("====================================================");
 	}
 
 	public void setInfo(Scanner input) {
 		input = new Scanner(System.in);
 		System.out.println();
-		System.out.println("================================================");
+		System.out.println("====================================================");
 		super.setInfo(input);
 		input = new Scanner(System.in);
 		System.out.print(" - type of motorcycle         : ");
 		motorcycleType   = input.nextLine();
 		typeOfSeat       = MyScan.scanInt(input," - siedzenie [ilo miejscowe]  : ");
 		accelerationTime = MyScan.scanDouble(input," - czas 0-100 km/h [sek]      : ");
-		System.out.println("================================================");	
+		System.out.println("====================================================");	
 	}
 	
 	static {

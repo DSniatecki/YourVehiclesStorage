@@ -15,6 +15,7 @@ public final class MyView {
 	            Runtime.getRuntime().exec("clear");
 	        }
 	   } catch (IOException | InterruptedException ex) {}
+	
 	}
 	
 	public static void   waitUntil(Scanner input){
