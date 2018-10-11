@@ -37,7 +37,7 @@ public final class MyView {
 	
 	public static void   waitUntil(Scanner input){
 		System.out.println();
-		System.out.print("[ Press enter to continue ] ");
+		System.out.print("[ Press \"enter\" to continue ] ");
 		input.nextLine();
 	}
 		

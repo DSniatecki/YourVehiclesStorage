@@ -31,11 +31,11 @@ public class Vehicle {
 			System.out.println("                  Vehicle : " + vehicleNumber);
 			System.out.println("----------------------------------------------------");
 			System.out.println("[ "+ ID + " ][ " + brand +" " + model +" ]");
-			System.out.println(" - year of production         : "+ productionYear);
+			System.out.println(" - production date            : "+ productionYear);
 			System.out.println(" - mileage                    : "+ mileage + " km ");
-			System.out.println(" - power                      : " + power + " hp");	
+			System.out.println(" - engine power               : " + power + " hp");	
 			System.out.println(" - power per ton              : " + (Math.round((double)(power / weight )*1000.0)/1000.0) + " hp/ton");
-			System.out.println(" - engine Capacity            : "+ engineCapacity + " cm^3");
+			System.out.println(" - engine capacity            : "+ engineCapacity + " cm^3");
 			System.out.println(" - weight                     : "+ weight + " kg ");
 
 		}
@@ -44,15 +44,15 @@ public class Vehicle {
 			System.out.println();
 			System.out.println("====================================================");
 			System.out.println(" Podaj ponizsze dane dotyczace tego pojazdu : ");
-			System.out.print(" - marka                      : ");
+			System.out.print(" - brand                      : ");
 			brand           = input.nextLine();
 			System.out.print(" - model                      : ");
 			model           = input.nextLine();
-			productionYear = MyScan.scanInt(input," - year of production         : ");
+			productionYear = MyScan.scanInt(input,   " - production date            : ");
 			mileage        = MyScan.scanDouble(input," - mileage                    : ");
-			power          = MyScan.scanInt(input," - moc silnika [km]           : ");
-			engineCapacity = MyScan.scanDouble(input," - pojemnosc silnika [cm^3]   : ");
-			weight         = MyScan.scanDouble(input," - waga [kg]                  : ");
+			power          = MyScan.scanInt(input,   " - engine power [hp]          : ");
+			engineCapacity = MyScan.scanDouble(input," - engine capacity [cm^3]     : ");
+			weight         = MyScan.scanDouble(input," - weight [kg]                : ");
 		}
 		
 		public int getPower() {

@@ -6,10 +6,9 @@ import java.util.Scanner;
 import com.DSniatecki.tools.MyScan;
 import com.DSniatecki.tools.MyView;
 
-public class VehicleStorage {
+public final class VehicleStorage {
 
 	private static int ID2;
-	
 	
 	private String ID;
 	private String adress;
@@ -60,7 +59,7 @@ public class VehicleStorage {
 		input.nextLine();
 	}
 	
-	public  void removeVehicle(Scanner input) {
+	private void removeVehicle(Scanner input) {
 		if( myVehicle.size() > 0) {	
 			System.out.println();
 			System.out.println("====================================================");
@@ -88,8 +87,7 @@ public class VehicleStorage {
 		}
 	}
 	
-	
-	public void showGarageMenu() {
+	private void showGarageMenu() {
 		System.out.println("[ Welcome in Garage menu. Press :   ]");
 		System.out.println();
 		System.out.println(" \"s\" - to display all vehicles in this garage ");
@@ -118,7 +116,7 @@ public class VehicleStorage {
 				case "b" :											break;
 				default  :
 					System.out.println();
-					System.out.println("[ Prosze wybrac jedna z pozycji z menu magazynu !!! ]");
+					System.out.println("[ Prosze wybrac jedna z pozycji z menu garazu !!! ]");
 					MyView.waitUntil(input);
 					break;
 			}

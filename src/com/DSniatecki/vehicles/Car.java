@@ -3,7 +3,7 @@ package com.DSniatecki.vehicles;
 import com.DSniatecki.tools.MyScan;
 import java.util.Scanner;
 
-public class Car extends Vehicle{
+public final class Car extends Vehicle{
 
 	private static int ID2;
 	

@@ -1,23 +1,21 @@
+package com.DSniatecki.vehicles;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.DSniatecki.vehicles.*;
 import com.DSniatecki.tools.*;
 
-public class MainVehiclesStorage {
+public final class VehiclesStorageOffice{
 
-	public static long programStartTime;
-	public static ArrayList<VehicleStorage> myStorage = new ArrayList<VehicleStorage>(2);
-	public static Scanner input = new Scanner(System.in);	
-	
-	public static void main(String[] args) {
+	private ArrayList<VehicleStorage> myStorage = new ArrayList<VehicleStorage>(2);
+		
+	public void execute(Scanner input) {
 
 		String userChoice;
-		startTheProgram();		
 				
 		do {
 			MyView.clearScreen(input);
-			
+	
 			showMenu();
 			userChoice = input.nextLine();
 			
@@ -35,41 +33,34 @@ public class MainVehiclesStorage {
 					break;
 				case "o" :
 					if( myStorage.size() > 0) {
-						
 						int choice=0;
-						
 						System.out.println("====================================================");
 						choice = MyScan.scanInt(input, "Podaj numer magazynu do ktorego chcesz przejsc : ");     
 						System.out.println("====================================================");
 						
-						if(( choice > 0 ) && ( choice <= myStorage.size() )) 
-						{
+						if(( choice > 0 ) && ( choice <= myStorage.size() )) {
 							input.nextLine();
 							myStorage.get(choice-1).execute(input);
-						}
-						else
-						{
+						} else {
 							System.out.println();
 							System.out.println(" >> Nie znaleziono magazynu o takim numerze << ");		
 							input.nextLine();
 							MyView.waitUntil(input);		
 						}
-					}
-					else {
+					} else {
 						System.out.println();
 						System.out.println("------------------------------------------------");
 						System.out.println("-------  You do not have any warehouse  --------");
 						System.out.println("------------------------------------------------");
 						MyView.waitUntil(input);
 					}	
-					
 					break;
 				case "t" :
 					MyTime.showCurrentTime();
 					MyView.waitUntil(input);
 					break;
 				case "r" :
-					removeStorage();
+					removeStorage(input);
 					break;
 				case "Q" :
 					break;
@@ -81,14 +72,10 @@ public class MainVehiclesStorage {
 					break;
 			}
 			
-		}while(!userChoice.equals("Q"));
-		
-		
-		endTheProgram();
-
+		}while(!userChoice.equals("Q"));		
 	}
 	
-	public static void removeStorage() {
+	private void removeStorage(Scanner input) {
 		
 		if( myStorage.size() > 0) {
 			int choice=0;
@@ -119,8 +106,8 @@ public class MainVehiclesStorage {
 		}	
 	}
 
-	public static void showMenu() {
-		System.out.println("[ Welcome in Main menu . Press :   ]");
+	private void showMenu() {
+		System.out.println("[ Welcome in main menu . Press :   ]");
 		System.out.println();
 		System.out.println(" \"s\" - to display all Storages ");
 		System.out.println(" \"c\" - to create a new Storage ");
@@ -132,7 +119,7 @@ public class MainVehiclesStorage {
 		System.out.print(">> Your choice : ");
 	}	
 	
-	public static void showAllStorages() {
+	private void showAllStorages() {
 		System.out.println();
 		if( myStorage.size() > 0) {
 			for(int i=0; i < myStorage.size(); i++) {
@@ -146,22 +133,4 @@ public class MainVehiclesStorage {
 		}
 	
 	}
-	
-	public static void startTheProgram(){
-		MyView.clearScreen(input);
-		System.out.println("[ !!! Welcome in the program  !!! ]");
-		programStartTime = System.currentTimeMillis();
-		MyTime.showCurrentTime();
-		MyView.waitUntil(input);
-	}
-	
-	public static void endTheProgram(){
-
-		long programExecutionTime = System.currentTimeMillis() - programStartTime;
-		System.out.println();
-		System.out.println("[ The Program has been closed ] ");
-		System.out.println("[ Execution time : " + ( double ) ( programExecutionTime / 1000.0 ) + " seconds ]" ); 
-	
-	}
-
 }

@@ -3,7 +3,7 @@ package com.DSniatecki.vehicles;
 import com.DSniatecki.tools.MyScan;
 import java.util.Scanner;
 
-public class Motorcycle extends Vehicle{
+public final class Motorcycle extends Vehicle{
 
 	private static int ID2;
 	
@@ -30,17 +30,17 @@ public class Motorcycle extends Vehicle{
 		super.showInfo(vehicleNumber);
 		System.out.println(" - type of motorcycle         : " + motorcycleType );
 		System.out.println(" - seat capacity              : " + typeOfSeat + " person(s) ");
-		System.out.println(" - 0-100 kmh time             : " + accelerationTime + " seconds");
+		System.out.println(" - 0-100 km/h time            : " + accelerationTime + " seconds");
 		System.out.println("====================================================");
 	}
 
 	public void setInfo(Scanner input) {
 		super.setInfo(input);
-		input = new Scanner(System.in);
-		System.out.print(" - type of motorcycle         : ");
+		input = new Scanner(System.in); 
+		System.out.print(                          " - type of motorcycle         : ");
 		motorcycleType   = input.nextLine();
-		typeOfSeat       = MyScan.scanInt(input," - siedzenie [ilo miejscowe]  : ");
-		accelerationTime = MyScan.scanDouble(input," - czas 0-100 km/h [sek]      : ");
+		typeOfSeat       = MyScan.scanInt(input,   " - seat capacity [person(s)]  : ");
+		accelerationTime = MyScan.scanDouble(input," - 0-100 km/h time [sec]      : ");
 		System.out.println("====================================================");	
 	}
 	
