@@ -15,7 +15,7 @@ public final class MyScan {
 				
 			}
 			else {
-				System.out.println("<[ !!! Zly format odpowiedzi !!! ]>");
+				System.out.println("[ !!! wrong answer format !!! ]");
 				System.out.print(question);
 				input.next();
 			}
@@ -54,7 +54,7 @@ public final class MyScan {
 				isAnswerCorrectType = true;
 			}
 			else {
-				System.out.println("<[ !!! Zly format odpowiedzi !!! ]>");
+				System.out.println("[ !!! wrong answer format !!! ]");
 				System.out.print(question);
 				input.next();
 			}

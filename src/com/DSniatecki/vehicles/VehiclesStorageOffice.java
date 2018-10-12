@@ -34,16 +34,16 @@ public final class VehiclesStorageOffice{
 				case "o" :
 					if( myStorage.size() > 0) {
 						int choice=0;
-						System.out.println("====================================================");
-						choice = MyScan.scanInt(input, "Podaj numer magazynu do ktorego chcesz przejsc : ");     
-						System.out.println("====================================================");
+						System.out.println("=========================================================");
+						choice = MyScan.scanInt(input, "Give the number of the storage you want to access : ");     
+						System.out.println("=========================================================");
 						
 						if(( choice > 0 ) && ( choice <= myStorage.size() )) {
 							input.nextLine();
 							myStorage.get(choice-1).execute(input);
 						} else {
 							System.out.println();
-							System.out.println(" >> Nie znaleziono magazynu o takim numerze << ");		
+							System.out.println(" >> No storage with the given number was found << ");		
 							input.nextLine();
 							MyView.waitUntil(input);		
 						}
@@ -67,7 +67,7 @@ public final class VehiclesStorageOffice{
 				
 				default:
 					System.out.println();
-					System.out.println("[ Prosze wybrac jedna z pozycji z glownego menu !!! ]");
+					System.out.println("[ Please select one of the main menu options !!! ]");
 					MyView.waitUntil(input);
 					break;
 			}
@@ -81,7 +81,7 @@ public final class VehiclesStorageOffice{
 			int choice=0;
 		
 			System.out.println("====================================================");
-			choice = MyScan.scanInt(input, "Podaj numer magazynu ktory chcesz usunac : ");
+			choice = MyScan.scanInt(input, "Give the storage number  you want to delete : ");
 			System.out.println("====================================================");
 		
 		
@@ -92,7 +92,7 @@ public final class VehiclesStorageOffice{
 			}
 			else{
 				System.out.println();
-				System.out.println(" >> Nie znaleziono magazynu o takim numerze << ");				
+				System.out.println(" >> No storage with the given number was found << ");				
 			}
 			input.nextLine();
 			MyView.waitUntil(input);	

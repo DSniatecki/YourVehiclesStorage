@@ -43,7 +43,7 @@ public class Vehicle {
 		public void setInfo(Scanner input) {
 			System.out.println();
 			System.out.println("====================================================");
-			System.out.println(" Podaj ponizsze dane dotyczace tego pojazdu : ");
+			System.out.println(" Give the data below regarding this vehicle : ");
 			System.out.print(" - brand                      : ");
 			brand           = input.nextLine();
 			System.out.print(" - model                      : ");

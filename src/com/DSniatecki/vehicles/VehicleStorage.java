@@ -38,10 +38,10 @@ public final class VehicleStorage {
 	public void setInfo(Scanner input) {
 		System.out.println();
 		System.out.println("====================================================");
-		System.out.println(" Podaj ponizsze dane dotyczace tego magazynu : ");
-		System.out.print(" - typ magazynu        : ");
+		System.out.println(" Give the data below regarding this storage : ");
+		System.out.print(" - type of storage     : ");
 		typeOfStorage = input.nextLine();
-		System.out.print(" - adress magazynu     : ");
+		System.out.print(" - address             : ");
 		adress = input.nextLine();
 		System.out.println("====================================================");
 	}
@@ -63,7 +63,7 @@ public final class VehicleStorage {
 		if( myVehicle.size() > 0) {	
 			System.out.println();
 			System.out.println("====================================================");
-			int choice = MyScan.scanInt(input, "Podaj numer pojazdu ktory chcesz usunac : ");
+			int choice = MyScan.scanInt(input, "Give the vehicle number  you want to delete : ");
 			System.out.println("====================================================");
 		
 			if(( choice > 0 ) && ( choice <= myVehicle.size() )) {
@@ -73,7 +73,7 @@ public final class VehicleStorage {
 			}
 			else{
 				System.out.println();
-				System.out.println(" >> Nie znaleziono pojazdu o takim numerze << ");			
+				System.out.println(" >> No vehicle with the given number was found << ");			
 			}
 			input.nextLine();
 			MyView.waitUntil(input);	
@@ -116,7 +116,7 @@ public final class VehicleStorage {
 				case "b" :											break;
 				default  :
 					System.out.println();
-					System.out.println("[ Prosze wybrac jedna z pozycji z menu garazu !!! ]");
+					System.out.println("[ Please select one of the storage menu options !!! ]");
 					MyView.waitUntil(input);
 					break;
 			}
