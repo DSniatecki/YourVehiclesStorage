@@ -1,4 +1,4 @@
-package com.DSniatecki.vehicles;
+package com.DSniatecki.vehiclesAndTheirWarehuses;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -81,19 +81,19 @@ public final class VehicleStorage {
 		else {
 			System.out.println();
 			System.out.println("------------------------------------------------");
-			System.out.println("-- You do not have any Vehicle in this garage --");
+			System.out.println("-- You do not have any Vehicle in this storage --");
 			System.out.println("------------------------------------------------");
 			MyView.waitUntil(input);
 		}
 	}
 	
-	private void showGarageMenu() {
-		System.out.println("[ Welcome in Garage menu. Press :   ]");
-		System.out.println();
-		System.out.println(" \"s\" - to display all vehicles in this garage ");
-		System.out.println(" \"c\" - to add a new car to this garage ");
-		System.out.println(" \"m\" - to add a new motorcycle to this garage");
-		System.out.println(" \"r\" - to remove selected vehicle from this garage ");
+	private void showGarageMenu(int storageNumber) {
+		System.out.println("[ Welcome in " + storageNumber + ". vehicles storage menu. Press :   ]");
+		System.out.println("");
+		System.out.println(" \"s\" - to display all vehicles in this storage");
+		System.out.println(" \"c\" - to add a new car to this storage ");
+		System.out.println(" \"m\" - to add a new motorcycle to this storage");
+		System.out.println(" \"r\" - to remove selected vehicle from this storage ");
 		System.out.println(" \"b\" - to go back");
 		System.out.println();
 		System.out.print(">> Your choice : ");
@@ -132,9 +132,9 @@ public final class VehicleStorage {
 				myVehicle.get(i).showInfo(i+1);	
 		}
 		else {
-			System.out.println("------------------------------------------------");
-			System.out.println("-----  There is no vehicle in this garage  -----");
-			System.out.println("------------------------------------------------");
+			System.out.println("-----------------------------------------------");
+			System.out.println("----- There is no vehicle in this storage  ----");
+			System.out.println("-----------------------------------------------");
 		}
 		
 		MyView.waitUntil(input);

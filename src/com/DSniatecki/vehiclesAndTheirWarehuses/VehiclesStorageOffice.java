@@ -1,4 +1,4 @@
-package com.DSniatecki.vehicles;
+package com.DSniatecki.vehiclesAndTheirWarehuses;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -81,7 +81,7 @@ public final class VehiclesStorageOffice{
 			int choice=0;
 		
 			System.out.println("====================================================");
-			choice = MyScan.scanInt(input, "Give the storage number  you want to delete : ");
+			choice = MyScan.scanInt(input, "Give the storage number you want to delete : ");
 			System.out.println("====================================================");
 		
 		

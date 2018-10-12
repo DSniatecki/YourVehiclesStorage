@@ -1,4 +1,4 @@
-package com.DSniatecki.vehicles;
+package com.DSniatecki.vehiclesAndTheirWarehuses;
 
 import com.DSniatecki.tools.MyScan;
 import java.util.Scanner;
@@ -46,8 +46,8 @@ public final class Car extends Vehicle{
 		bodyType    =  input.nextLine();
 		System.out.print(" - fueltype [petrol/diesel]   : ");
 		FuelType    =  input.nextLine();
-		length      = MyScan.scanInt(input," - dlugosc [ mm ]             : ");
-		doorsNumber = MyScan.scanInt(input," - ilosc drzwi                : ");
+		length      = MyScan.scanInt(input," - length [ mm ]              : ");
+		doorsNumber = MyScan.scanInt(input," - number of door             : ");
 		System.out.println("====================================================");
 	}
 

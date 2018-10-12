@@ -1,4 +1,4 @@
-package com.DSniatecki.vehicles;
+package com.DSniatecki.vehiclesAndTheirWarehuses;
 
 import com.DSniatecki.tools.MyScan;
 import java.util.Scanner;

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 import com.DSniatecki.tools.MyTime;
 import com.DSniatecki.tools.MyView;
-import com.DSniatecki.vehicles.VehiclesStorageOffice;
+import com.DSniatecki.vehiclesAndTheirWarehuses.VehiclesStorageOffice;
 
 public class MainYVSclass {
 
