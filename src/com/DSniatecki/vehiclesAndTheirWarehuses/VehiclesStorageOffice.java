@@ -40,7 +40,7 @@ public final class VehiclesStorageOffice{
 						
 						if(( choice > 0 ) && ( choice <= myStorage.size() )) {
 							input.nextLine();
-							myStorage.get(choice-1).execute(input);
+							myStorage.get(choice-1).execute(input, choice);
 						} else {
 							System.out.println();
 							System.out.println(" >> No storage with the given number was found << ");		

@@ -88,7 +88,7 @@ public final class VehicleStorage {
 	}
 	
 	private void showGarageMenu(int storageNumber) {
-		System.out.println("[ Welcome in " + storageNumber + ". vehicles storage menu. Press :   ]");
+		System.out.println("[ Welcome in " + storageNumber + ". storage menu. Press :   ]");
 		System.out.println("");
 		System.out.println(" \"s\" - to display all vehicles in this storage");
 		System.out.println(" \"c\" - to add a new car to this storage ");
@@ -99,12 +99,12 @@ public final class VehicleStorage {
 		System.out.print(">> Your choice : ");
 	}
 	
-	public void execute(Scanner input) {
+	public void execute(Scanner input,int storageNumber) {
 		
 		String userChoice;
 		do {
 			MyView.clearScreen(input);
-			showGarageMenu();
+			showGarageMenu(storageNumber);
 			userChoice = input.nextLine();	
 			MyView.clearScreen(input);
 			
