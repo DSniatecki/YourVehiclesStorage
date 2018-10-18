@@ -1,5 +1,6 @@
 package com.DSniatecki.tools;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public final class MyScan {
@@ -15,7 +16,7 @@ public final class MyScan {
 				
 			}
 			else {
-				System.out.println("[ !!! wrong answer format !!! ]");
+				System.out.println("[ Wrong Format ][ Enter an integer ]");
 				System.out.print(question);
 				input.next();
 			}
@@ -25,7 +26,7 @@ public final class MyScan {
 			
 		return inputInt;
 	}
-	
+
 	public static int    scanInt(Scanner input){
 		int inputInt=0; 
 		boolean isAnswerCorrectType=false;
@@ -36,6 +37,7 @@ public final class MyScan {
 			}
 			else {
 				input.next();
+				System.out.println("[ Wrong Format ][ Enter an integer ]");
 			}
 			
 		}while(!isAnswerCorrectType);
@@ -43,7 +45,22 @@ public final class MyScan {
 			
 		return inputInt;
 	}
-
+	
+	public static int    getInt(Scanner input){
+		int b;
+		
+		do {
+			try {
+				b = input.nextInt();
+				return b;
+			}
+			catch(InputMismatchException e){
+				input.nextLine();
+				System.out.println("[ Wrong Format ][ Enter an integer ]");
+			}
+		}while(true);
+		}
+	
 	public static double scanDouble(Scanner input, String question){
 		double inputDouble=0;
 		boolean isAnswerCorrectType=false;
@@ -54,7 +71,7 @@ public final class MyScan {
 				isAnswerCorrectType = true;
 			}
 			else {
-				System.out.println("[ !!! wrong answer format !!! ]");
+				System.out.println("[ Wrong Format ][ Enter a floating point number or an integer ]");
 				System.out.print(question);
 				input.next();
 			}
@@ -74,6 +91,7 @@ public final class MyScan {
 		}
 		else {
 			input.next();
+			System.out.println("[ Wrong Format ][ Enter a floating point number or an integer ]");
 		}
 		
 	}while(!isAnswerCorrectType);
@@ -81,4 +99,18 @@ public final class MyScan {
 	return inputDouble;
 	}
 
+	public static double getDouble(Scanner input){
+		int b;
+		
+		do {
+			try {
+				b = input.nextInt();
+				return b;
+			}
+			catch(InputMismatchException e){
+				input.nextLine();
+				System.out.println("[ Wrong Format ][ Enter a floating point number or an integer ]");
+			}
+		}while(true);
+		}
 }

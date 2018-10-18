@@ -20,7 +20,7 @@ public class MainYVSclass {
 	
 	
 	
-	public static void startTheProgram(){
+	private static void startTheProgram(){
 		MyView.clearScreen(input);
 		System.out.println("[ !!! Welcome in the program  !!! ]");
 		programStartTime = System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class MainYVSclass {
 		MyView.waitUntil(input);
 	}
 	
-	public static void endTheProgram(){
+	private static void endTheProgram(){
 
 		long programExecutionTime = System.currentTimeMillis() - programStartTime;
 		System.out.println();
