@@ -113,4 +113,8 @@ public final class MyScan {
 			}
 		}while(true);
 		}
+
+	public static String scanString(Scanner input){
+		return input.nextLine();
+	}
 }

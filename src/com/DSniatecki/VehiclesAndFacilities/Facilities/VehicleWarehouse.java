@@ -1,12 +1,17 @@
-package com.DSniatecki.vehiclesAndTheirWarehuses;
+package com.DSniatecki.VehiclesAndFacilities.Facilities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.DSniatecki.VehiclesAndFacilities.Vehicles.Car;
+import com.DSniatecki.VehiclesAndFacilities.Vehicles.Motorcycle;
+import com.DSniatecki.VehiclesAndFacilities.Vehicles.Vehicle;
 import com.DSniatecki.tools.MyScan;
 import com.DSniatecki.tools.MyView;
 
-public final class VehicleStorage {
+@SuppressWarnings("serial")
+public final class VehicleWarehouse implements Serializable, VehicleWarehousable{
 
 	private static int ID2;
 	
@@ -16,49 +21,44 @@ public final class VehicleStorage {
 	
 	private ArrayList<Vehicle> myVehicle = new ArrayList<Vehicle>(2);
 	
-	public VehicleStorage() {
+	public VehicleWarehouse() {
 		this("no name");
 	} 
-
-	public VehicleStorage(String adress){
+	public VehicleWarehouse(String adress){
 		ID2++;
 		ID = "VS." + ID2;
 		this.adress = adress;
 	}
 
 	
-	public void showInfo(int storageNumber) {
+	public  void showInfo(int storageNumber) {
 		System.out.println("====================================================");
-		System.out.println("                  Storage : " + storageNumber);
+		System.out.println("                   Warehouse : " + storageNumber);
 		System.out.println("----------------------------------------------------");
 		System.out.println(" [ "+ ID + " ] " + this.typeOfStorage + " : " + this.adress);
 		System.out.println("====================================================");	
 	}
-	
-	public void setInfo(Scanner input) {
+	public  void setInfo(Scanner input) {
 		System.out.println();
 		System.out.println("====================================================");
 		System.out.println(" Give the data below regarding this storage : ");
 		System.out.print(" - type of storage     : ");
-		typeOfStorage = input.nextLine();
+		typeOfStorage = MyScan.scanString(input);
 		System.out.print(" - address             : ");
-		adress = input.nextLine();
+		adress        = MyScan.scanString(input);
 		System.out.println("====================================================");
 	}
-	
 	private void addCar(Scanner input){
 		myVehicle.add(new Car());
 		myVehicle.get(myVehicle.size()-1).setInfo(input);
 		input.nextLine();
 	}
-	
 	private void addMotorcycle(Scanner input) {
 		
 		myVehicle.add(new Motorcycle());
 		myVehicle.get(myVehicle.size()-1).setInfo(input);
 		input.nextLine();
-	}
-	
+	}	
 	private void removeVehicle(Scanner input) {
 		if( myVehicle.size() > 0) {	
 			System.out.println();
@@ -86,9 +86,10 @@ public final class VehicleStorage {
 			MyView.waitUntil(input);
 		}
 	}
-	
 	private void showGarageMenu(int storageNumber) {
-		System.out.println("[ Welcome in " + storageNumber + ". storage menu. Press :   ]");
+		System.out.println("[ Welcome in " + storageNumber + ". storage menu. Vehicles located here : " + myVehicle.size() +  " ]");
+		System.out.println("");
+		System.out.println("Press : " );
 		System.out.println("");
 		System.out.println(" \"s\" - to display all vehicles in this storage");
 		System.out.println(" \"c\" - to add a new car to this storage ");
@@ -98,8 +99,7 @@ public final class VehicleStorage {
 		System.out.println();
 		System.out.print(">> Your choice : ");
 	}
-	
-	public void execute(Scanner input,int storageNumber) {
+	public  void execute(Scanner input,int storageNumber) {
 		
 		String userChoice;
 		do {
@@ -122,9 +122,7 @@ public final class VehicleStorage {
 			}
 		}while(!userChoice.equals("b"));
 	}
-	
-	
-	public void showAllVehicles(Scanner input) {
+	public  void showAllVehicles(Scanner input) {
 		System.out.println("");
 		
 		if(myVehicle.size() != 0) {

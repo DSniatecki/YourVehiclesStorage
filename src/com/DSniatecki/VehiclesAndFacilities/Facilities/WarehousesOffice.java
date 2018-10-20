@@ -1,33 +1,65 @@
-package com.DSniatecki.vehiclesAndTheirWarehuses;
+package com.DSniatecki.VehiclesAndFacilities.Facilities;
 
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.DSniatecki.tools.*;
 
-public final class VehiclesStorageOffice{
 
-	private ArrayList<VehicleStorage> myStorage = new ArrayList<VehicleStorage>(2);
+public final class WarehousesOffice{
+	
+	private ArrayList<VehicleWarehouse> myStorage = new ArrayList<VehicleWarehouse>(2);
 		
-	public void execute(Scanner input) {
-
-		String userChoice;
-				
+	public void saveToFile(String fileLocation) {
+		try{
+		   FileOutputStream myFileOutputStream = new FileOutputStream(fileLocation);
+		   ObjectOutputStream myObjectOutputStream = new ObjectOutputStream(myFileOutputStream);
+		   myObjectOutputStream.writeObject(myStorage);
+		   myObjectOutputStream.close();
+		}
+		catch (Exception e){
+		   e.printStackTrace(); 
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void readFromFile(String fileLocation) {
+		
+		try{
+		    FileInputStream myFileInputStream = new FileInputStream(fileLocation);
+		    ObjectInputStream myObjectInputStream = new ObjectInputStream(myFileInputStream);
+		    myStorage = (ArrayList<VehicleWarehouse>) myObjectInputStream.readObject(); 
+		    myObjectInputStream.close();
+		}
+		catch(FileNotFoundException e){
+		}
+		catch (Exception e){
+			e.printStackTrace(); 
+		}
+		
+    }
+	
+	public void  execute(Scanner input) {
+		String userChoice;		
 		do {
 			MyView.clearScreen(input);
-	
 			showMenu();
 			userChoice = input.nextLine();
-			
 			MyView.clearScreen(input);
 			
 			switch(userChoice) {
 				case "s" :
-					showAllStorages();
+					showAllWarehouses();
 					MyView.waitUntil(input);
 					break;
 				case "c" :
-					myStorage.add(new VehicleStorage());
+					myStorage.add(new VehicleWarehouse());
 					myStorage.get( myStorage.size() - 1 ).setInfo(input);
 					MyView.waitUntil(input);
 					break;
@@ -60,7 +92,7 @@ public final class VehiclesStorageOffice{
 					MyView.waitUntil(input);
 					break;
 				case "r" :
-					removeStorage(input);
+					removeWarehouse(input);
 					break;
 				case "Q" :
 					break;
@@ -75,24 +107,24 @@ public final class VehiclesStorageOffice{
 		}while(!userChoice.equals("Q"));		
 	}
 	
-	private void removeStorage(Scanner input) {
+	private void removeWarehouse(Scanner input) {
 		
 		if( myStorage.size() > 0) {
 			int choice=0;
 		
 			System.out.println("====================================================");
-			choice = MyScan.scanInt(input, "Give the storage number you want to delete : ");
+			choice = MyScan.scanInt(input, "Give the warehouse number you want to delete : ");
 			System.out.println("====================================================");
 		
 		
 			if(( choice > 0 ) && ( choice <= myStorage.size() )) {
 				myStorage.remove(choice-1);
 				System.out.println();
-				System.out.println("[ Storage " + choice + ". was successfully removed ]");			
+				System.out.println("[ Warehouse " + choice + ". was successfully removed ]");			
 			}
 			else{
 				System.out.println();
-				System.out.println(" >> No storage with the given number was found << ");				
+				System.out.println(" >> No warehouse with the given number was found << ");				
 			}
 			input.nextLine();
 			MyView.waitUntil(input);	
@@ -109,17 +141,17 @@ public final class VehiclesStorageOffice{
 	private void showMenu() {
 		System.out.println("[ Welcome in main menu . Press :   ]");
 		System.out.println();
-		System.out.println(" \"s\" - to display all Storages ");
-		System.out.println(" \"c\" - to create a new Storage ");
-		System.out.println(" \"o\" - to open selected storage menu");
+		System.out.println(" \"s\" - to display all warehouses ");
+		System.out.println(" \"c\" - to create a new warehouse ");
+		System.out.println(" \"o\" - to open selected warehouse menu");
 		System.out.println(" \"t\" - to show current time");
-		System.out.println(" \"r\" - to remove selected storage");
+		System.out.println(" \"r\" - to remove selected warehouse");
 		System.out.println(" \"Q\" - to exit program");
 		System.out.println();
 		System.out.print(">> Your choice : ");
 	}	
 	
-	private void showAllStorages() {
+	private void showAllWarehouses() {
 		System.out.println();
 		if( myStorage.size() > 0) {
 			for(int i=0; i < myStorage.size(); i++) {

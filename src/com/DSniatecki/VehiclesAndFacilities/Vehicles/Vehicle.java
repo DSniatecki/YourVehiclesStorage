@@ -1,12 +1,12 @@
-package com.DSniatecki.vehiclesAndTheirWarehuses;
+package com.DSniatecki.VehiclesAndFacilities.Vehicles;
 
 import com.DSniatecki.tools.MyScan;
+
 import java.util.Scanner;
 
-public class Vehicle {
+public class Vehicle implements Vehicable{
 	 
 		private String ID;
-		
 		private String brand;
 		private String model;
 		private int productionYear;
@@ -15,8 +15,10 @@ public class Vehicle {
 		private double engineCapacity;
 		private double weight;
 		
-		public Vehicle( String brand, String model,int productionYear,double mileage, int power, double engineCapacity, double weight) {
-			
+		public Vehicle() {
+			this("none", "none", 0, 0, 0, 0, 0);
+		}	
+		public Vehicle( String brand, String model,int productionYear,double mileage, int power, double engineCapacity, double weight) {		
 			this.brand = brand;
 			this.model = model;
 			this.productionYear= productionYear;
@@ -38,46 +40,49 @@ public class Vehicle {
 			System.out.println(" - engine capacity            : "+ engineCapacity + " cm^3");
 			System.out.println(" - weight                     : "+ weight + " kg ");
 
-		}
-		
+		}	
 		public void setInfo(Scanner input) {
 			System.out.println();
 			System.out.println("====================================================");
 			System.out.println(" Give the data below regarding this vehicle : ");
 			System.out.print(" - brand                      : ");
-			brand           = input.nextLine();
+			brand          = MyScan.scanString(input);
 			System.out.print(" - model                      : ");
-			model           = input.nextLine();
+			model          = MyScan.scanString(input);
 			productionYear = MyScan.scanInt(input,   " - production date            : ");
 			mileage        = MyScan.scanDouble(input," - mileage                    : ");
 			power          = MyScan.scanInt(input,   " - engine power [hp]          : ");
 			engineCapacity = MyScan.scanDouble(input," - engine capacity [cm^3]     : ");
 			weight         = MyScan.scanDouble(input," - weight [kg]                : ");
 		}
-		
-		public int getPower() {
-			return power;
+
+		public String getID() {
+			return ID;
 		}
-		public void setPower(int power) {
-			this.power = power;
+		public   void setID(String iD) {
+			ID = iD;
+		}
+		public String getBrand() {
+			return brand;
+		}
+		public String getModel() {
+			return model;
+		}
+		public    int getProductionYear() {
+			return productionYear;
+		}
+		public double getMileage() {
+			return mileage;
+		}
+		public    int getPower() {
+			return power;
 		}
 		public double getEngineCapacity() {
 			return engineCapacity;
 		}
-		public void setEngineCapacity(double engineCapacity) {
-			this.engineCapacity = engineCapacity;
-		}
 		public double getWeight() {
 			return weight;
 		}
-		public void setWeight(double weight) {
-			this.weight = weight;
-		}
-		public void setID(String ID){
-			this.ID = ID;
-		}
-		public String getID() {
-			return this.ID;
-		}
 		
+	
 }

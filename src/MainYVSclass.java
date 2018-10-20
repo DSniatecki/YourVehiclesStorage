@@ -1,24 +1,25 @@
 import java.util.Scanner;
 
+import com.DSniatecki.VehiclesAndFacilities.Facilities.WarehousesOffice;
 import com.DSniatecki.tools.MyTime;
 import com.DSniatecki.tools.MyView;
-import com.DSniatecki.vehiclesAndTheirWarehuses.VehiclesStorageOffice;
 
 public class MainYVSclass {
 
 	public static long programStartTime;
 	public static Scanner input = new Scanner(System.in);
 	
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		startTheProgram();
 		
-		VehiclesStorageOffice VSO = new VehiclesStorageOffice();
+		WarehousesOffice VSO = new WarehousesOffice();
+		
+		VSO.readFromFile("VehiclesStorageOffice.ser");
 		VSO.execute(input);
+		VSO.saveToFile("VehiclesStorageOffice.ser");
 		
 		endTheProgram();
 	}
-	
-	
 	
 	private static void startTheProgram(){
 		MyView.clearScreen(input);
@@ -36,6 +37,5 @@ public class MainYVSclass {
 		System.out.println("[ Execution time : " + ( double ) ( programExecutionTime / 1000.0 ) + " seconds ]" ); 
 	
 	}
-	
-	
+
 }
