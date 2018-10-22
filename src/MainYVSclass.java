@@ -25,10 +25,19 @@ public class MainYVSclass {
 	}
 	
 	private static void startTheProgram(){
-		MyView.clearScreen(input);
-		System.out.println("[ !!! Welcome in the program  !!! ]");
-		MyTime.showCurrentTime();
-		MyView.waitUntil(input);
+		MyView.clearScreen(input);                        
+		System.out.println("     _____________________________________________   ");
+		System.out.println("    /                                             \\    ");
+		System.out.println("   /                                               \\   ");
+		System.out.println("  /_________________________________________________\\  ");
+		System.out.println("   |_|___|___|___|_________________________________|");
+		System.out.println("   |___|                 |   |                 |   |");
+		System.out.println("   |_|_|                 |   |                 |   |");
+		System.out.println("   |___|                 |   |                 |   |");
+		System.out.println("   |_|_|_________________|___|_________________|___|");
+		System.out.println();
+		System.out.println("          [ !!! Welcome in the program  !!! ]      ");
+		MyView.waitUntil(input, "             [ Press \"enter\" to continue ] ");
 	}
 	
 	private static void endTheProgram(){
