@@ -19,7 +19,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 	private String adress;
 	private String typeOfStorage;
 	
-	private ArrayList<Vehicle> myVehicle = new ArrayList<Vehicle>(2);
+	public ArrayList<Vehicle> myVehicle = new ArrayList<Vehicle>(2);
 	
 	public VehicleWarehouse() {
 		this("no name");
@@ -32,6 +32,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 
 	
 	public  void showInfo(int storageNumber) {
+		System.out.println();
 		System.out.println("====================================================");
 		System.out.println("                   Warehouse : " + storageNumber);
 		System.out.println("----------------------------------------------------");
@@ -47,6 +48,44 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		System.out.print(" - address             : ");
 		adress        = MyScan.scanString(input);
 		System.out.println("====================================================");
+	}
+	public  void execute(Scanner input,int storageNumber) {
+		
+		String userChoice;
+		do {
+			MyView.clearScreen(input);
+			showGarageMenu(storageNumber);
+			userChoice = input.nextLine();	
+			MyView.clearScreen(input);
+			
+			switch(userChoice) {
+				case "s" :			showAllVehicles(input);			break;
+				case "c" :			addCar(input);					break;
+				case "m" :			addMotorcycle(input);			break;
+				case "r" :			removeVehicle(input);			break;
+				case "b" :											break;
+				
+				default  :
+					System.out.println();
+					System.out.println("[ Please select one of the storage menu options !!! ]");
+					MyView.waitUntil(input);
+					break;
+			}
+		}while(!userChoice.equals("b"));
+	}
+	public  void showAllVehicles(Scanner input) {
+		if(myVehicle.size() != 0) {
+			for(int i=0; i < myVehicle.size(); i++)
+				myVehicle.get(i).showInfo(i+1);
+		}
+		else {
+			System.out.println("");
+			System.out.println("-----------------------------------------------");
+			System.out.println("----- There is no vehicle in this storage  ----");
+			System.out.println("-----------------------------------------------");
+		}
+		
+		MyView.waitUntil(input);
 	}
 	private void addCar(Scanner input){
 		myVehicle.add(new Car());
@@ -87,6 +126,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		}
 	}
 	private void showGarageMenu(int storageNumber) {
+		System.out.println();
 		System.out.println("[ Welcome in " + storageNumber + ". storage menu. Vehicles located here : " + myVehicle.size() +  " ]");
 		System.out.println("");
 		System.out.println("Press : " );
@@ -99,44 +139,9 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		System.out.println();
 		System.out.print(">> Your choice : ");
 	}
-	public  void execute(Scanner input,int storageNumber) {
-		
-		String userChoice;
-		do {
-			MyView.clearScreen(input);
-			showGarageMenu(storageNumber);
-			userChoice = input.nextLine();	
-			MyView.clearScreen(input);
-			
-			switch(userChoice) {
-				case "s" :			showAllVehicles(input);			break;
-				case "c" :			addCar(input);					break;
-				case "m" :			addMotorcycle(input);			break;
-				case "r" :			removeVehicle(input);			break;
-				case "b" :											break;
-				default  :
-					System.out.println();
-					System.out.println("[ Please select one of the storage menu options !!! ]");
-					MyView.waitUntil(input);
-					break;
-			}
-		}while(!userChoice.equals("b"));
-	}
-	public  void showAllVehicles(Scanner input) {
-		System.out.println("");
-		
-		if(myVehicle.size() != 0) {
-			for(int i=0; i < myVehicle.size(); i++)
-				myVehicle.get(i).showInfo(i+1);	
-		}
-		else {
-			System.out.println("-----------------------------------------------");
-			System.out.println("----- There is no vehicle in this storage  ----");
-			System.out.println("-----------------------------------------------");
-		}
-		
-		MyView.waitUntil(input);
-	}
+	
+
+	
 	
 	static {
 		ID2=0;

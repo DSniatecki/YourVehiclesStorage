@@ -8,14 +8,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import com.DSniatecki.tools.*;
 
 
 public final class WarehousesOffice{
 	
 	private ArrayList<VehicleWarehouse> myStorage = new ArrayList<VehicleWarehouse>(2);
-		
+	
 	public void saveToFile(String fileLocation) {
 		try{
 		   FileOutputStream myFileOutputStream = new FileOutputStream(fileLocation);
@@ -29,7 +28,7 @@ public final class WarehousesOffice{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void readFromFile(String fileLocation) {
+	public void loadTheStateFromFile(String fileLocation) {
 		
 		try{
 		    FileInputStream myFileInputStream = new FileInputStream(fileLocation);
@@ -66,6 +65,7 @@ public final class WarehousesOffice{
 				case "o" :
 					if( myStorage.size() > 0) {
 						int choice=0;
+						System.out.println();
 						System.out.println("=========================================================");
 						choice = MyScan.scanInt(input, "Give the number of the storage you want to access : ");     
 						System.out.println("=========================================================");
@@ -111,7 +111,7 @@ public final class WarehousesOffice{
 		
 		if( myStorage.size() > 0) {
 			int choice=0;
-		
+			System.out.println();
 			System.out.println("====================================================");
 			choice = MyScan.scanInt(input, "Give the warehouse number you want to delete : ");
 			System.out.println("====================================================");
@@ -139,6 +139,7 @@ public final class WarehousesOffice{
 	}
 
 	private void showMenu() {
+		System.out.println();
 		System.out.println("[ Welcome in main menu . Press :   ]");
 		System.out.println();
 		System.out.println(" \"s\" - to display all warehouses ");
@@ -152,17 +153,18 @@ public final class WarehousesOffice{
 	}	
 	
 	private void showAllWarehouses() {
-		System.out.println();
 		if( myStorage.size() > 0) {
 			for(int i=0; i < myStorage.size(); i++) {
 				myStorage.get(i).showInfo(i+1);
 			}	
 		}
 		else {
+			System.out.println("");
 			System.out.println("------------------------------------------------");
 			System.out.println("-------  You do not have any warehouse  --------");
 			System.out.println("------------------------------------------------");
 		}
 	
 	}
+
 }

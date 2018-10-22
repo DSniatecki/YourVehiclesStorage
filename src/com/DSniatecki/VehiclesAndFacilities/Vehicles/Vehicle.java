@@ -29,6 +29,7 @@ public class Vehicle implements Vehicable{
 		}
 
 		public void showInfo(int vehicleNumber) {
+			System.out.println();
 			System.out.println("====================================================");
 			System.out.println("                  Vehicle : " + vehicleNumber);
 			System.out.println("----------------------------------------------------");
