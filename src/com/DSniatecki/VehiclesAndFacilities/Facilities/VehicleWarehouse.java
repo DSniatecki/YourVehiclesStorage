@@ -19,7 +19,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 	private String adress;
 	private String typeOfStorage;
 	
-	public ArrayList<Vehicle> myVehicle = new ArrayList<Vehicle>(2);
+	private ArrayList<Vehicle> myVehicle = new ArrayList<Vehicle>(2);
 	
 	public VehicleWarehouse() {
 		this("no name");
@@ -87,6 +87,29 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		
 		MyView.waitUntil(input);
 	}
+	
+	public  long getTotalPower() {
+		long totalPower=0;
+		for(Vehicle x : myVehicle) {
+			totalPower += x.getPower();
+		}
+		return totalPower;
+	}
+	public  long getTotalMileage() {
+		long totalMileage=0;
+		for(Vehicle x : myVehicle) {
+			totalMileage +=Math.round( x.getMileage());
+		}
+		return totalMileage;
+	}
+	public  long getTotalWeight() {
+		long totalWeight=0;
+		for(Vehicle x : myVehicle) {
+			totalWeight += Math.round( x.getWeight() );
+		}
+		return totalWeight;
+	}
+	
 	private void addCar(Scanner input){
 		myVehicle.add(new Car());
 		myVehicle.get(myVehicle.size()-1).setInfo(input);

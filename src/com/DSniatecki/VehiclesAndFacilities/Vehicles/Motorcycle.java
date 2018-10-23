@@ -45,7 +45,10 @@ public final class Motorcycle extends Vehicle implements Serializable{
 		accelerationTime = MyScan.scanDouble(input," - 0-100 km/h time [sec]      : ");
 		System.out.println("====================================================");	
 	}
-
+	public void editInfo(Scanner input) {
+		
+		
+	}
 	public String getMotorcycleType() {
 		return motorcycleType;
 	}

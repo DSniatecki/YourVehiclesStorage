@@ -4,7 +4,7 @@ import com.DSniatecki.tools.MyScan;
 
 import java.util.Scanner;
 
-public class Vehicle implements Vehicable{
+public abstract class Vehicle implements Vehicable{
 	 
 		private String ID;
 		private String brand;
@@ -56,7 +56,8 @@ public class Vehicle implements Vehicable{
 			engineCapacity = MyScan.scanDouble(input," - engine capacity [cm^3]     : ");
 			weight         = MyScan.scanDouble(input," - weight [kg]                : ");
 		}
-
+		public abstract void editInfo(Scanner input);
+		
 		public String getID() {
 			return ID;
 		}

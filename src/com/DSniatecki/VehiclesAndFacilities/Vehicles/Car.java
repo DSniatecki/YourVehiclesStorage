@@ -51,6 +51,59 @@ public final class Car extends Vehicle implements Serializable{
 		doorsNumber = MyScan.scanInt(input," - number of door             : ");
 		System.out.println("====================================================");
 	}
+	public void editInfo(Scanner input) {
+		String userChoice;
+		
+		System.out.println();
+		System.out.println("==============================================================");
+		System.out.println("Give the car parameter you want to edit :");
+		System.out.println("--------------------------------------------------------------");
+		System.out.println(" - \"brand\"         -\"model\"         -\"production year");
+		System.out.println(" - \"mileage\"       -\"power\"         -\"engine capacity\" ");
+		System.out.println(" - \"weight\"        -\"length\"        -\"number of doors\" ");
+		System.out.println(" - \"type of body\"  -\"type of fuel\"  ");
+		System.out.println("--------------------------------------------------------------");
+		System.out.print("Your choice : ");
+	
+		userChoice = MyScan.scanString(input);
+	
+		switch(userChoice) {
+			case "type of fuel" : 
+				System.out.print(" - fueltype [petrol/diesel]   : ");
+				FuelType    = MyScan.scanString(input);
+				break;
+			case "type of body" :
+				System.out.print(" - type of body [e.g. coupe ] : ");
+				bodyType    = MyScan.scanString(input);
+				break;
+			case "length" :
+				length      = MyScan.scanInt(input," - length [ mm ]              : ");
+				break;
+			case "number of doors":
+				doorsNumber = MyScan.scanInt(input," - number of door             : ");
+				break;
+			case "weight" : 
+				break;
+			case "engine capcaity":
+				break;
+			case "power":
+				break;
+			case "mileage":
+				break;
+			case "production year":
+				break;
+			case "model":
+				break;
+			case "brand":
+				break;
+			default:
+				System.out.println(" [ This vehicle is not described by this parametr");
+		}	
+		
+			
+	
+	}
+	
 	
 	public    int getLength() {
 		return length;

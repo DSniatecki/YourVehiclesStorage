@@ -15,7 +15,7 @@ public final class WarehousesOffice{
 	
 	private ArrayList<VehicleWarehouse> myStorage = new ArrayList<VehicleWarehouse>(2);
 	
-	public void saveToFile(String fileLocation) {
+	public  void saveToFile(String fileLocation) {
 		try{
 		   FileOutputStream myFileOutputStream = new FileOutputStream(fileLocation);
 		   ObjectOutputStream myObjectOutputStream = new ObjectOutputStream(myFileOutputStream);
@@ -26,9 +26,8 @@ public final class WarehousesOffice{
 		   e.printStackTrace(); 
 		}
 	}
-	
 	@SuppressWarnings("unchecked")
-	public void loadTheStateFromFile(String fileLocation) {
+	public  void loadTheStateFromFile(String fileLocation) {
 		
 		try{
 		    FileInputStream myFileInputStream = new FileInputStream(fileLocation);
@@ -43,8 +42,7 @@ public final class WarehousesOffice{
 		}
 		
     }
-	
-	public void  execute(Scanner input) {
+	public  void execute(Scanner input) {
 		String userChoice;		
 		do {
 			MyView.clearScreen(input);
@@ -87,6 +85,9 @@ public final class WarehousesOffice{
 						MyView.waitUntil(input);
 					}	
 					break;
+				case "S" :
+				    showStatistics();
+				    MyView.waitUntil(input);
 				case "t" :
 					MyTime.showCurrentTime();
 					MyView.waitUntil(input);
@@ -106,7 +107,6 @@ public final class WarehousesOffice{
 			
 		}while(!userChoice.equals("Q"));		
 	}
-	
 	private void removeWarehouse(Scanner input) {
 		
 		if( myStorage.size() > 0) {
@@ -137,21 +137,22 @@ public final class WarehousesOffice{
 			MyView.waitUntil(input);
 		}	
 	}
-
 	private void showMenu() {
 		System.out.println();
-		System.out.println("[ Welcome in main menu . Press :   ]");
+		System.out.println("[ Welcome in main menu.][ You have : " + myStorage.size() + " storage(s) ]");
+		System.out.println();
+		System.out.println("Press :");
 		System.out.println();
 		System.out.println(" \"s\" - to display all warehouses ");
 		System.out.println(" \"c\" - to create a new warehouse ");
 		System.out.println(" \"o\" - to open selected warehouse menu");
-		System.out.println(" \"t\" - to show current time");
 		System.out.println(" \"r\" - to remove selected warehouse");
+		System.out.println(" \"S\" - to display statistics");
+		System.out.println(" \"t\" - to show current time");
 		System.out.println(" \"Q\" - to exit program");
 		System.out.println();
 		System.out.print(">> Your choice : ");
 	}	
-	
 	private void showAllWarehouses() {
 		if( myStorage.size() > 0) {
 			for(int i=0; i < myStorage.size(); i++) {
@@ -166,5 +167,51 @@ public final class WarehousesOffice{
 		}
 	
 	}
-
+	private void showStatistics() {
+		long totalVehiclesPower = getTotalPower();
+		if(totalVehiclesPower == 0) {
+			System.out.println();
+			System.out.println("--------------------------------------------------");
+			System.out.println("-- There is no vehicle in any of the warehouses --");
+			System.out.println("--------------------------------------------------");
+			
+		} else {
+		System.out.println();
+		System.out.println("====================================================");
+		System.out.println("               Vehicles statistics :                 ");
+		System.out.println("----------------------------------------------------");
+		System.out.println("");
+		System.out.println(" - total power    : " + totalVehiclesPower + " hp");
+		System.out.println("");
+		System.out.println(" - total mileage  : " + getTotalMileage() + " km");
+		System.out.println("");
+		System.out.println(" - total weight   : " + getTotalWeight() + " kg");
+		System.out.println("");
+		System.out.println("====================================================");	
+		}
+	}
+	
+	private long getTotalPower() {
+		long totalPower=0;
+		for(VehicleWarehouse x : myStorage) {
+			totalPower += x.getTotalPower();
+		}
+		return totalPower;
+	}	
+	private long getTotalMileage() {
+		long totalPower=0;
+		for(VehicleWarehouse x : myStorage) {
+			totalPower += x.getTotalPower();
+		}
+		return totalPower;
+	}	
+	private long getTotalWeight(){
+		long totalWeight=0;
+		for(VehicleWarehouse x : myStorage) {
+			totalWeight += x.getTotalWeight();
+		}
+		return totalWeight;
+	}
+	
+	
 }
