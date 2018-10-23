@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 import com.DSniatecki.VehiclesAndFacilities.Facilities.WarehousesOffice;
 
-import com.DSniatecki.tools.MyTime;
 import com.DSniatecki.tools.MyView;
 
 public class MainYVSclass {
@@ -26,18 +25,30 @@ public class MainYVSclass {
 	
 	private static void startTheProgram(){
 		MyView.clearScreen(input);                        
-		System.out.println("     _____________________________________________   ");
-		System.out.println("    /                                             \\    ");
-		System.out.println("   /                                               \\   ");
-		System.out.println("  /_________________________________________________\\  ");
-		System.out.println("   |_|___|___|___|_________________________________|");
-		System.out.println("   |___|                 |   |                 |   |");
-		System.out.println("   |_|_|                 |   |                 |   |");
-		System.out.println("   |___|                 |   |                 |   |");
-		System.out.println("   |_|_|_________________|___|_________________|___|");
-		System.out.println();
-		System.out.println("          [ !!! Welcome in the program  !!! ]      ");
-		MyView.waitUntil(input, "             [ Press \"enter\" to continue ] ");
+		System.out.println(" _____________________________________________________________________ ");
+		System.out.println("|  _________________________________________________________________  |");
+		System.out.println("| |                                                                 | |");
+		System.out.println("| |                 \" YOUR VEHICLES STORAGE V1.0\"                   | |");
+		System.out.println("| |                                                                 | |");
+		System.out.println("| |      ____________________________________________________       | |");	
+		System.out.println("| |     /                                                    \\      | |");
+		System.out.println("| |    /                                                      \\     | |");
+		System.out.println("| |   /________________________________________________________\\    | |");
+		System.out.println("| |     |_|___|___|___|___|___|___|___|___|___|___|____|___|_|      | |");
+		System.out.println("| |     |___|                   |___|                    |___|      | |");
+		System.out.println("| |     |_|_|                   |_|_|                    |_|_|      | |");
+		System.out.println("| |     |___|                   |___|                    |___|      | |");
+		System.out.println("| |     |_|_|___________________|_|_|____________________|_|_|      | |");
+		System.out.println("| |                                                                 | |");
+		System.out.println("| |                                                                 | |");
+		System.out.println("| |_________________________________________________________________| |");
+		System.out.println("|_____________________________________________________________________|");		
+		System.out.println("");		
+		System.out.println("                  [ !!! Welcome in the program  !!! ]                  ");
+		MyView.waitUntil(input, "                     [ Press \"enter\" to continue ] ");
+	
+	
+	
 	}
 	
 	private static void endTheProgram(){

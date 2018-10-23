@@ -63,6 +63,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 				case "c" :			addCar(input);					break;
 				case "m" :			addMotorcycle(input);			break;
 				case "r" :			removeVehicle(input);			break;
+				case "e" :			editVehicle(input);				break;
 				case "b" :											break;
 				
 				default  :
@@ -158,11 +159,39 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		System.out.println(" \"c\" - to add a new car to this storage ");
 		System.out.println(" \"m\" - to add a new motorcycle to this storage");
 		System.out.println(" \"r\" - to remove selected vehicle from this storage ");
+		System.out.println(" \"e\" - to edit selected vehicle in this storage");
 		System.out.println(" \"b\" - to go back");
 		System.out.println();
 		System.out.print(">> Your choice : ");
 	}
 	
+	private void editVehicle(Scanner input){
+		if( myVehicle.size() > 0) {	
+			System.out.println();
+			System.out.println("====================================================");
+			int choice = MyScan.scanInt(input, "Give the vehicle number you want to edit : ");
+			System.out.println("====================================================");
+		
+			if(( choice > 0 ) && ( choice <= myVehicle.size() )) {
+				MyView.clearScreen(input);
+				input.nextLine();
+				myVehicle.get(choice-1).editInfo(input);
+			}
+			else{
+				input.nextLine();
+				System.out.println();
+				System.out.println(" >> No vehicle with the given number was found << ");			
+			}
+			MyView.waitUntil(input);	
+		}
+		else {
+			System.out.println();
+			System.out.println("------------------------------------------------");
+			System.out.println("-- You do not have any Vehicle in this storage --");
+			System.out.println("------------------------------------------------");
+			MyView.waitUntil(input);
+		}
+	}
 
 	
 	

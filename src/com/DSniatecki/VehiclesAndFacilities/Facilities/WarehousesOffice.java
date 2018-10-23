@@ -199,11 +199,11 @@ public final class WarehousesOffice{
 		return totalPower;
 	}	
 	private long getTotalMileage() {
-		long totalPower=0;
+		long totalMileage=0;
 		for(VehicleWarehouse x : myStorage) {
-			totalPower += x.getTotalPower();
+			totalMileage += x.getTotalMileage();
 		}
-		return totalPower;
+		return totalMileage;
 	}	
 	private long getTotalWeight(){
 		long totalWeight=0;

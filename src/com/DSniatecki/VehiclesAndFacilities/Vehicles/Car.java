@@ -64,44 +64,54 @@ public final class Car extends Vehicle implements Serializable{
 		System.out.println(" - \"type of body\"  -\"type of fuel\"  ");
 		System.out.println("--------------------------------------------------------------");
 		System.out.print("Your choice : ");
-	
 		userChoice = MyScan.scanString(input);
-	
+		System.out.println("--------------------------------------------------------------");
+		System.out.println();
+		editInfoInside(userChoice, input);
+		}
+	private void editInfoInside(String userChoice, Scanner input) {
+		
 		switch(userChoice) {
-			case "type of fuel" : 
-				System.out.print(" - fueltype [petrol/diesel]   : ");
-				FuelType    = MyScan.scanString(input);
-				break;
-			case "type of body" :
-				System.out.print(" - type of body [e.g. coupe ] : ");
-				bodyType    = MyScan.scanString(input);
-				break;
-			case "length" :
-				length      = MyScan.scanInt(input," - length [ mm ]              : ");
-				break;
-			case "number of doors":
-				doorsNumber = MyScan.scanInt(input," - number of door             : ");
-				break;
-			case "weight" : 
-				break;
-			case "engine capcaity":
-				break;
-			case "power":
-				break;
-			case "mileage":
-				break;
-			case "production year":
-				break;
-			case "model":
-				break;
-			case "brand":
-				break;
-			default:
-				System.out.println(" [ This vehicle is not described by this parametr");
+		case "type of fuel" : 
+			System.out.print(" - fueltype [petrol/diesel]   : ");
+			FuelType    = MyScan.scanString(input);
+			break;
+		case "type of body" :
+			System.out.print(" - type of body [e.g. coupe ] : ");
+			bodyType    = MyScan.scanString(input);
+			break;
+		case "length" :
+			length      = MyScan.scanInt(input," - length [ mm ]              : ");
+			break;
+		case "number of doors":
+			doorsNumber = MyScan.scanInt(input," - number of door             : ");
+			break;
+		case "weight" : 
+			super.setWeight( MyScan.scanDouble(input," - weight [kg]                : "));
+			break;
+		case "engine capcaity":
+			super.setEngineCapacity(MyScan.scanDouble(input," - engine capacity [cm^3]     : "));
+			break;
+		case "power":
+			super.setPower(MyScan.scanInt(input,   " - engine power [hp]          : "));
+			break;
+		case "mileage":
+			super.setMileage(MyScan.scanDouble(input," - mileage                    : "));
+			break;
+		case "production year":
+			super.setProductionYear(MyScan.scanInt(input,   " - production date            : "));
+			break;
+		case "model":
+			super.setModel(MyScan.scanString(input));
+			break;
+		case "brand":
+			System.out.print(" - brand                      : ");
+			super.setBrand( MyScan.scanString(input));
+			break;
+		default:
+			System.out.println(" This vehicle is not described by this parametr ]");
 		}	
 		
-			
-	
 	}
 	
 	

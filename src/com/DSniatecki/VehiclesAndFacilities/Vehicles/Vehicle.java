@@ -85,6 +85,27 @@ public abstract class Vehicle implements Vehicable{
 		public double getWeight() {
 			return weight;
 		}
+		public void setBrand(String brand) {
+			this.brand = brand;
+		}
+		public void setModel(String model) {
+			this.model = model;
+		}
+		public void setProductionYear(int productionYear) {
+			this.productionYear = productionYear;
+		}
+		public void setMileage(double mileage) {
+			this.mileage = mileage;
+		}
+		public void setPower(int power) {
+			this.power = power;
+		}
+		public void setEngineCapacity(double engineCapacity) {
+			this.engineCapacity = engineCapacity;
+		}
+		public void setWeight(double weight) {
+			this.weight = weight;
+		}
 		
 	
 }
