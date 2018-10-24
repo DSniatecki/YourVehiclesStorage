@@ -5,7 +5,7 @@ import java.util.Scanner;
 public interface Vehicable {
 	void showInfo(int vehicleNumber);
 	void setInfo( Scanner input);
-	void   setID(String iD);
+	void setID(String iD);
 	void editInfo(Scanner input);
 }
 

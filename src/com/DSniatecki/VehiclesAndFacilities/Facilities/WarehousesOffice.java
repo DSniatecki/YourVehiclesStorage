@@ -64,16 +64,16 @@ public final class WarehousesOffice{
 					if( myStorage.size() > 0) {
 						int choice=0;
 						System.out.println();
-						System.out.println("=========================================================");
-						choice = MyScan.scanInt(input, "Give the number of the storage you want to access : ");     
-						System.out.println("=========================================================");
+						System.out.println("================================================================");
+						choice = MyScan.scanInt(input, "Give the number of the warehouse you want to access : ");     
+						System.out.println("================================================================");
 						
 						if(( choice > 0 ) && ( choice <= myStorage.size() )) {
 							input.nextLine();
 							myStorage.get(choice-1).execute(input, choice);
 						} else {
 							System.out.println();
-							System.out.println(" >> No storage with the given number was found << ");		
+							System.out.println(" >> No warehoue with the given number was found << ");		
 							input.nextLine();
 							MyView.waitUntil(input);		
 						}
@@ -111,6 +111,7 @@ public final class WarehousesOffice{
 			
 		}while(!userChoice.equals("Q"));		
 	}
+	
 	private void removeWarehouse(Scanner input) {
 		
 		if( myStorage.size() > 0) {
@@ -143,7 +144,7 @@ public final class WarehousesOffice{
 	}
 	private void showMenu() {
 		System.out.println();
-		System.out.println("[ Welcome in main menu.][ You have : " + myStorage.size() + " storage(s) ]");
+		System.out.println("[ Welcome in main menu.][ You have : " + myStorage.size() + " warehouse(s) ]");
 		System.out.println();
 		System.out.println("Press :");
 		System.out.println();
@@ -176,9 +177,9 @@ public final class WarehousesOffice{
 		long totalVehiclesPower = getTotalPower();
 		if(totalVehiclesPower == 0) {
 			System.out.println();
-			System.out.println("--------------------------------------------------");
-			System.out.println("-- There is no vehicle in any of the warehouses --");
-			System.out.println("--------------------------------------------------");
+			System.out.println("--------------------------------------------------------");
+			System.out.println("----- There is no vehicle in any of the warehouses -----");
+			System.out.println("--------------------------------------------------------");
 			
 		} else {
 		System.out.println();
@@ -195,7 +196,6 @@ public final class WarehousesOffice{
 		System.out.println("====================================================");	
 		}
 	}
-	
 	private void editWarehouse(Scanner input) {
 		if( myStorage.size() > 0) {	
 			System.out.println();

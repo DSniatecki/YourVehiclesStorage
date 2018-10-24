@@ -29,14 +29,14 @@ public final class Motorcycle extends Vehicle implements Serializable{
 		
 	}
 
-	public void showInfo(int vehicleNumber) {
+	public  void showInfo(int vehicleNumber) {
 		super.showInfo(vehicleNumber);
 		System.out.println(" - type of motorcycle         : " + motorcycleType );
 		System.out.println(" - seat capacity              : " + typeOfSeat + " person(s) ");
 		System.out.println(" - 0-100 km/h time            : " + accelerationTime + " seconds");
 		System.out.println("====================================================");
 	}
-	public void setInfo(Scanner input) {
+	public  void setInfo(Scanner input) {
 		super.setInfo(input);
 		input = new Scanner(System.in); 
 		System.out.print(                          " - type of motorcycle         : ");
@@ -45,7 +45,7 @@ public final class Motorcycle extends Vehicle implements Serializable{
 		accelerationTime = MyScan.scanDouble(input," - 0-100 km/h time [sec]      : ");
 		System.out.println("====================================================");	
 	}
-	public void editInfo(Scanner input) {
+	public  void editInfo(Scanner input) {
 		String userChoice;
 		
 		System.out.println();

@@ -44,8 +44,8 @@ public class MainYVSclass {
 		System.out.println("| |_________________________________________________________________| |");
 		System.out.println("|_____________________________________________________________________|");		
 		System.out.println("");		
-		System.out.println("                  [ !!! Welcome in the program  !!! ]                  ");
-		MyView.waitUntil(input, "                     [ Press \"enter\" to continue ] ");
+		System.out.println("                 [ !!! Welcome in the program  !!! ]                  ");
+		MyView.waitUntil(input, "                    [ Press \"enter\" to continue ] ");
 	
 	
 	

@@ -64,9 +64,6 @@ public  class Vehicle implements Vehicable, Serializable{
 		public String getID() {
 			return ID;
 		}
-		public   void setID(String iD) {
-			ID = iD;
-		}
 		public String getBrand() {
 			return brand;
 		}
@@ -87,6 +84,10 @@ public  class Vehicle implements Vehicable, Serializable{
 		}
 		public double getWeight() {
 			return weight;
+		}
+		
+		public void setID(String iD) {
+			ID = iD;
 		}
 		public void setBrand(String brand) {
 			this.brand = brand;

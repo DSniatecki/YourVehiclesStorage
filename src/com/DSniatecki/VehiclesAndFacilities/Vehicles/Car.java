@@ -32,7 +32,7 @@ public final class Car extends Vehicle implements Serializable{
 		super.setID("C." + ID2);
 	}
 
-	public void showInfo(int vehicleNumber) {
+	public  void showInfo(int vehicleNumber) {
 		super.showInfo(vehicleNumber);
 		System.out.println(" - fueltype                   : " + FuelType);
 		System.out.println(" - type of body               : " + bodyType);
@@ -40,7 +40,7 @@ public final class Car extends Vehicle implements Serializable{
 		System.out.println(" - car length                 : " + length + " mm");	
 		System.out.println("====================================================");
 	}
-	public void setInfo(Scanner input) {
+	public  void setInfo(Scanner input) {
 		super.setInfo(input);
 		input = new Scanner(System.in);
 		System.out.print(" - type of body [e.g. coupe ] : ");
@@ -51,7 +51,7 @@ public final class Car extends Vehicle implements Serializable{
 		doorsNumber = MyScan.scanInt(input," - number of doors            : ");
 		System.out.println("====================================================");
 	}
-	public void editInfo(Scanner input) {
+	public  void editInfo(Scanner input) {
 		String userChoice;
 		
 		System.out.println();
