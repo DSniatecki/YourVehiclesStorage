@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public final class Car extends Vehicle implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 11L;
 
 	private static int ID2;
 	
@@ -48,7 +48,7 @@ public final class Car extends Vehicle implements Serializable{
 		System.out.print(" - fueltype [petrol/diesel]   : ");
 		FuelType    = MyScan.scanString(input);
 		length      = MyScan.scanInt(input," - length [ mm ]              : ");
-		doorsNumber = MyScan.scanInt(input," - number of door             : ");
+		doorsNumber = MyScan.scanInt(input," - number of doors            : ");
 		System.out.println("====================================================");
 	}
 	public void editInfo(Scanner input) {
@@ -84,7 +84,7 @@ public final class Car extends Vehicle implements Serializable{
 			length      = MyScan.scanInt(input," - length [ mm ]              : ");
 			break;
 		case "number of doors":
-			doorsNumber = MyScan.scanInt(input," - number of door             : ");
+			doorsNumber = MyScan.scanInt(input," - number of doors            : ");
 			break;
 		case "weight" : 
 			super.setWeight( MyScan.scanDouble(input," - weight [kg]                : "));

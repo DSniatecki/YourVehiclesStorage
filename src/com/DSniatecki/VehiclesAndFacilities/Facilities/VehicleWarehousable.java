@@ -7,6 +7,7 @@ public interface VehicleWarehousable {
 	void setInfo(Scanner input);
 	void execute(Scanner input,int storageNumber);
 	void showAllVehicles(Scanner input);
+	void editInfo(Scanner input);
 	public long getTotalPower();
 	public long getTotalMileage();
 	public long getTotalWeight();

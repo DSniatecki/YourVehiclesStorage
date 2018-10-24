@@ -88,12 +88,16 @@ public final class WarehousesOffice{
 				case "S" :
 				    showStatistics();
 				    MyView.waitUntil(input);
+				    break;
 				case "t" :
 					MyTime.showCurrentTime();
 					MyView.waitUntil(input);
 					break;
 				case "r" :
 					removeWarehouse(input);
+					break;
+				case "e" :
+					editWarehouse(input);
 					break;
 				case "Q" :
 					break;
@@ -147,6 +151,7 @@ public final class WarehousesOffice{
 		System.out.println(" \"c\" - to create a new warehouse ");
 		System.out.println(" \"o\" - to open selected warehouse menu");
 		System.out.println(" \"r\" - to remove selected warehouse");
+		System.out.println(" \"e\" - to edit selected warehouse");
 		System.out.println(" \"S\" - to display statistics");
 		System.out.println(" \"t\" - to show current time");
 		System.out.println(" \"Q\" - to exit program");
@@ -188,6 +193,34 @@ public final class WarehousesOffice{
 		System.out.println(" - total weight   : " + getTotalWeight() + " kg");
 		System.out.println("");
 		System.out.println("====================================================");	
+		}
+	}
+	
+	private void editWarehouse(Scanner input) {
+		if( myStorage.size() > 0) {	
+			System.out.println();
+			System.out.println("====================================================");
+			int choice = MyScan.scanInt(input, "Give the warehouse number you want to edit : ");
+			System.out.println("====================================================");
+		
+			if(( choice > 0 ) && ( choice <= myStorage.size() )) {
+				MyView.clearScreen(input);
+				input.nextLine();
+				myStorage.get(choice-1).editInfo(input);
+			}
+			else{
+				input.nextLine();
+				System.out.println();
+				System.out.println(" >> No warehouse with the given number was found << ");			
+			}
+			MyView.waitUntil(input);	
+		}
+		else {
+			System.out.println();
+			System.out.println("------------------------------------------------");
+			System.out.println("-------- You do not have any warehouse ---------");
+			System.out.println("------------------------------------------------");
+			MyView.waitUntil(input);
 		}
 	}
 	

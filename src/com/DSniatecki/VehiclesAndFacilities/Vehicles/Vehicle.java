@@ -2,11 +2,14 @@ package com.DSniatecki.VehiclesAndFacilities.Vehicles;
 
 import com.DSniatecki.tools.MyScan;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Vehicle implements Vehicable{
-	 
-		private String ID;
+public  class Vehicle implements Vehicable, Serializable{
+	
+	    private static final long serialVersionUID = 1L;
+		
+	    private String ID;
 		private String brand;
 		private String model;
 		private int productionYear;
@@ -56,7 +59,7 @@ public abstract class Vehicle implements Vehicable{
 			engineCapacity = MyScan.scanDouble(input," - engine capacity [cm^3]     : ");
 			weight         = MyScan.scanDouble(input," - weight [kg]                : ");
 		}
-		public abstract void editInfo(Scanner input);
+		public void editInfo(Scanner input) {}
 		
 		public String getID() {
 			return ID;

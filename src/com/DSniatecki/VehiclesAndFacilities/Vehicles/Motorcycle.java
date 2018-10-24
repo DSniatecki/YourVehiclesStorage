@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public final class Motorcycle extends Vehicle implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 12L;
 
 	private static int ID2;
 	

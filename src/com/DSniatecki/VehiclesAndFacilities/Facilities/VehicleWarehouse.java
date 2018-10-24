@@ -10,8 +10,10 @@ import com.DSniatecki.VehiclesAndFacilities.Vehicles.Vehicle;
 import com.DSniatecki.tools.MyScan;
 import com.DSniatecki.tools.MyView;
 
-@SuppressWarnings("serial")
+
 public final class VehicleWarehouse implements Serializable, VehicleWarehousable{
+
+	private static final long serialVersionUID = 111L;
 
 	private static int ID2;
 	
@@ -33,21 +35,23 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 	
 	public  void showInfo(int storageNumber) {
 		System.out.println();
-		System.out.println("====================================================");
-		System.out.println("                   Warehouse : " + storageNumber);
-		System.out.println("----------------------------------------------------");
-		System.out.println(" [ "+ ID + " ] " + this.typeOfStorage + " : " + this.adress);
-		System.out.println("====================================================");	
+		System.out.println("==============================================================");
+		System.out.println(" [ "+ ID + " ]               Warehouse : " + storageNumber);
+		System.out.println("--------------------------------------------------------------");
+		System.out.println(" - type             : "+ this.typeOfStorage );
+	    System.out.println(" - adress           : " + this.adress);
+		System.out.println(" - vehicles inside  : " + this.myVehicle.size() );
+	    System.out.println("==============================================================");	
 	}
 	public  void setInfo(Scanner input) {
 		System.out.println();
-		System.out.println("====================================================");
+		System.out.println("==============================================================");
 		System.out.println(" Give the data below regarding this storage : ");
 		System.out.print(" - type of storage     : ");
 		typeOfStorage = MyScan.scanString(input);
 		System.out.print(" - address             : ");
 		adress        = MyScan.scanString(input);
-		System.out.println("====================================================");
+		System.out.println("==============================================================");
 	}
 	public  void execute(Scanner input,int storageNumber) {
 		
@@ -81,34 +85,12 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		}
 		else {
 			System.out.println("");
-			System.out.println("-----------------------------------------------");
-			System.out.println("----- There is no vehicle in this storage  ----");
-			System.out.println("-----------------------------------------------");
+			System.out.println("---------------------------------------------------");
+			System.out.println("------- There is no vehicle in this storage  ------");
+			System.out.println("---------------------------------------------------");
 		}
 		
 		MyView.waitUntil(input);
-	}
-	
-	public  long getTotalPower() {
-		long totalPower=0;
-		for(Vehicle x : myVehicle) {
-			totalPower += x.getPower();
-		}
-		return totalPower;
-	}
-	public  long getTotalMileage() {
-		long totalMileage=0;
-		for(Vehicle x : myVehicle) {
-			totalMileage +=Math.round( x.getMileage());
-		}
-		return totalMileage;
-	}
-	public  long getTotalWeight() {
-		long totalWeight=0;
-		for(Vehicle x : myVehicle) {
-			totalWeight += Math.round( x.getWeight() );
-		}
-		return totalWeight;
 	}
 	
 	private void addCar(Scanner input){
@@ -163,8 +145,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		System.out.println(" \"b\" - to go back");
 		System.out.println();
 		System.out.print(">> Your choice : ");
-	}
-	
+	}	
 	private void editVehicle(Scanner input){
 		if( myVehicle.size() > 0) {	
 			System.out.println();
@@ -192,9 +173,60 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 			MyView.waitUntil(input);
 		}
 	}
-
+	public void  editInfo(Scanner input) {
+		String userChoice;
+		
+		System.out.println();
+		System.out.println("==============================================================");
+		System.out.println("      Give the warehouse parameter you want to edit :");
+		System.out.println("--------------------------------------------------------------");
+		System.out.println("         - \"adress\"         -\"type of storage\" ");       
+		System.out.println("--------------------------------------------------------------");
+		System.out.print("Your choice : ");
+		userChoice = MyScan.scanString(input);
+		System.out.println("--------------------------------------------------------------");
+		System.out.println();
+		editInfoInside(userChoice, input);
+		}
+	private void editInfoInside(String userChoice, Scanner input) {
+		switch(userChoice) {
+		case "adress" : 
+			System.out.print(" - address             : ");
+			adress        = MyScan.scanString(input);
+			break;
+		case "type of storage" :
+			System.out.print(" - type of storage     : ");
+			typeOfStorage = MyScan.scanString(input);
+			break;
+		default:
+			System.out.println("[ This warehouse is not described by this parametr ]");
+		}		
+	}	
 	
-	
+	public  long getTotalPower() {
+		long totalPower=0;
+		for(Vehicle x : myVehicle) {
+			totalPower += x.getPower();
+		}
+		return totalPower;
+	}
+	public  long getTotalMileage() {
+		long totalMileage=0;
+		for(Vehicle x : myVehicle) {
+			totalMileage +=Math.round( x.getMileage());
+		}
+		return totalMileage;
+	}
+	public  long getTotalWeight() {
+		long totalWeight=0;
+		for(Vehicle x : myVehicle) {
+			totalWeight += Math.round( x.getWeight() );
+		}
+		return totalWeight;
+	}
+	public int getMyVehicleSize() {
+		return myVehicle.size();
+	}
 	static {
 		ID2=0;
 	}
