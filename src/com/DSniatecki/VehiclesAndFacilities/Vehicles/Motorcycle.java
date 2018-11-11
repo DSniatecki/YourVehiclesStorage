@@ -2,6 +2,8 @@ package com.DSniatecki.VehiclesAndFacilities.Vehicles;
 
 import com.DSniatecki.tools.MyScan;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -103,6 +105,41 @@ public final class Motorcycle extends Vehicle implements Serializable{
 			System.out.println("[ This vehicle is not described by this parametr ] ");
 		}	
 	System.out.println("          [ Chosen parametr has been modified correctly ]");
+		
+		
+	}
+	
+	public void sendToTheFile() throws IOException {
+
+		String fileName = getBrand() + "." + getModel() + "." + getID() + ".txt";
+		FileWriter fileWriter = null;
+		
+		try {
+			fileWriter = new FileWriter(fileName);
+		
+			fileWriter.write("[ "+ getID() + " ][ " + getBrand() +" " + getModel() +" ]"+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - production date            : "+ getProductionYear()+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - mileage                    : "+ getMileage() + " km"+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - engine power               : " + getPower() + " hp"+ System.getProperty( "line.separator" ));	
+			fileWriter.write(" - engine capacity            : "+ getEngineCapacity() + " cm^3" + System.getProperty( "line.separator" ));
+			fileWriter.write(" - weight                     : "+ getWeight() + " kg"+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - type of motorcycle         : " + motorcycleType + System.getProperty( "line.separator" ));
+			fileWriter.write(" - seat capacity              : " + typeOfSeat + " person(s)"+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - 0-100 km/h time            : " + accelerationTime + " seconds"+ System.getProperty( "line.separator" ));
+			System.out.println("");
+			System.out.println("[ The file : " + fileName + " was created correctly ]");
+			System.out.println("");
+			
+		
+		} catch ( IOException e ) {
+			System.out.println("");
+			System.out.println("[ Warning ! An error occurred while creating the file ]");
+			System.out.println("");
+		} finally {
+			fileWriter.close();
+			
+		}
+		
 		
 		
 	}

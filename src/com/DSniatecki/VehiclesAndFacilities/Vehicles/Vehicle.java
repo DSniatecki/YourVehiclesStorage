@@ -2,6 +2,7 @@ package com.DSniatecki.VehiclesAndFacilities.Vehicles;
 
 import com.DSniatecki.tools.MyScan;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -59,7 +60,9 @@ public  class Vehicle implements Vehicable, Serializable{
 			engineCapacity = MyScan.scanDouble(input," - engine capacity [cm^3]     : ");
 			weight         = MyScan.scanDouble(input," - weight [kg]                : ");
 		}
-		public void editInfo(Scanner input) {}
+		public void editInfo(Scanner input){}
+		
+		public void sendToTheFile() throws IOException{}
 		
 		public String getID() {
 			return ID;
@@ -85,6 +88,7 @@ public  class Vehicle implements Vehicable, Serializable{
 		public double getWeight() {
 			return weight;
 		}
+		
 		
 		public void setID(String iD) {
 			ID = iD;

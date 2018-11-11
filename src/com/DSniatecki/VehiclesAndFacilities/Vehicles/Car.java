@@ -2,6 +2,8 @@ package com.DSniatecki.VehiclesAndFacilities.Vehicles;
 
 import com.DSniatecki.tools.MyScan;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -114,6 +116,40 @@ public final class Car extends Vehicle implements Serializable{
 		
 	}
 	
+	public void sendToTheFile() throws IOException {
+		
+		String fileName = getBrand() + "." + getModel() + "." + getID() + ".txt";
+		FileWriter fileWriter = null;
+		
+		try {
+			fileWriter = new FileWriter(fileName);
+			fileWriter.write("[ "+ getID() + " ][ " + getBrand() +" " + getModel() +" ]"+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - production date            : "+ getProductionYear() + System.getProperty( "line.separator" ));
+			fileWriter.write(" - mileage                    : "+ getMileage() + " km "+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - engine power               : " + getPower() + " hp" + System.getProperty( "line.separator" ));	
+			fileWriter.write(" - engine capacity            : "+ getEngineCapacity() + " cm^3" + System.getProperty( "line.separator" ));
+			fileWriter.write(" - weight                     : "+ getWeight() + " kg "+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - fueltype                   : " + FuelType + System.getProperty( "line.separator" ));
+			fileWriter.write(" - type of body               : " + bodyType + System.getProperty( "line.separator" ));
+			fileWriter.write(" - number of doors            : " + doorsNumber + " doors"+ System.getProperty( "line.separator" ));
+			fileWriter.write(" - car length                 : " + length + " mm"+ System.getProperty( "line.separator" ));	
+			System.out.println("");
+			System.out.println("[ The file : " + fileName + " was created correctly ]");
+			System.out.println("");
+			
+		
+		} catch ( IOException e ) {
+			System.out.println("");
+			System.out.println("[ Warning ! An error occurred while creating the file ]");
+			System.out.println("");
+		} finally {
+			fileWriter.close();
+			
+		}
+		
+		
+		
+	}
 	
 	public    int getLength() {
 		return length;

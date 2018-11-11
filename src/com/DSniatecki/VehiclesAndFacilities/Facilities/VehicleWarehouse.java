@@ -1,5 +1,6 @@
 package com.DSniatecki.VehiclesAndFacilities.Facilities;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -38,10 +39,11 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		System.out.println("==============================================================");
 		System.out.println(" [ "+ ID + " ]               Warehouse : " + storageNumber);
 		System.out.println("--------------------------------------------------------------");
-		System.out.println(" - type             : "+ this.typeOfStorage );
-	    System.out.println(" - adress           : " + this.adress);
-		System.out.println(" - vehicles inside  : " + this.myVehicle.size() );
-	    System.out.println("==============================================================");	
+		System.out.println(" - type                : " + this.typeOfStorage );
+	    System.out.println(" - adress              : " + this.adress);
+		System.out.println(" - cars inside         : " + this.calculateCarsNumber() );
+		System.out.println(" - motorcycles inside  : " + this.calculateMotorcyclesNumber() );
+		System.out.println("==============================================================");	
 	}
 	public  void setInfo(Scanner input) {
 		System.out.println();
@@ -63,12 +65,15 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 			MyView.clearScreen(input);
 			
 			switch(userChoice) {
-				case "s" :			showAllVehicles(input);			break;
-				case "c" :			addCar(input);					break;
-				case "m" :			addMotorcycle(input);			break;
-				case "r" :			removeVehicle(input);			break;
-				case "e" :			editVehicle(input);				break;
-				case "b" :											break;
+				case "s" :			showAllVehicles(input);						break;
+				case "sm" :			showAllMotorcycles(input);					break;
+				case "sc" :			showAllCars(input);							break;
+				case "f" :          sendTheVehicleToTheFile(input); 	   		break; 
+				case "c" :			addCar(input);								break;
+				case "m" :			addMotorcycle(input);						break;
+				case "r" :			removeVehicle(input);						break;
+				case "e" :			editVehicle(input);							break;
+				case "b" :														break;
 				
 				default  :
 					System.out.println();
@@ -92,6 +97,51 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		
 		MyView.waitUntil(input);
 	}
+	
+	public  void showAllCars(Scanner input) {
+		
+		boolean isThereAnyCar = false;
+		
+		if(myVehicle.size() != 0) {
+			for(int i=0; i < myVehicle.size(); i++)
+				if( myVehicle.get(i) instanceof Car) {
+					myVehicle.get(i).showInfo(i+1);
+					isThereAnyCar = true;
+				}
+		}
+		if(myVehicle.size() == 0 || !isThereAnyCar){
+			System.out.println("");
+			System.out.println("----------------------------------------------------");
+			System.out.println("-------- There is no car in this warehouse  --------");
+			System.out.println("----------------------------------------------------");
+		}
+		
+		MyView.waitUntil(input);
+	}
+	
+	public  void showAllMotorcycles(Scanner input) {
+		
+		boolean isThereAnyMotorcycle = false;
+		
+		if(myVehicle.size() != 0) {
+			for(int i=0; i < myVehicle.size(); i++)
+				if( myVehicle.get(i) instanceof Motorcycle)	{
+						myVehicle.get(i).showInfo(i+1);
+						isThereAnyMotorcycle = true;
+				}
+		}
+		if(myVehicle.size() == 0 || !isThereAnyMotorcycle){
+			System.out.println("");
+			System.out.println("----------------------------------------------------");
+			System.out.println("----- There is no motorcycle in this warehouse -----");
+			System.out.println("----------------------------------------------------");
+		}
+		
+		MyView.waitUntil(input);
+	}
+	
+	
+	
 	public  void editInfo(Scanner input) {
 		String userChoice;
 		
@@ -129,7 +179,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 			if(( choice > 0 ) && ( choice <= myVehicle.size() )) {
 				myVehicle.remove(choice-1);
 				System.out.println();
-				System.out.println("[ Warehouse " + choice + ". was successfully removed ]");
+				System.out.println("[ vehicle " + choice + ". was successfully removed ]");
 			}
 			else{
 				System.out.println();
@@ -152,12 +202,15 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		System.out.println("");
 		System.out.println("Press : " );
 		System.out.println("");
-		System.out.println(" \"s\" - to display all vehicles in this warehouse");
-		System.out.println(" \"c\" - to add a new car to this warehouse ");
-		System.out.println(" \"m\" - to add a new motorcycle to this warehouse");
-		System.out.println(" \"r\" - to remove selected vehicle from this warehouse ");
-		System.out.println(" \"e\" - to edit selected vehicle in this warehouse");
-		System.out.println(" \"b\" - to go back");
+		System.out.println(" \"s\"  - to display all vehicles in this warehouse");
+		System.out.println(" \"sc\" - to display all cars in this warehouse");
+		System.out.println(" \"sm\" - to display all motorcycles in this warehouse");
+		System.out.println(" \"c\"  - to add a new car to this warehouse ");
+		System.out.println(" \"m\"  - to add a new motorcycle to this warehouse");
+		System.out.println(" \"r\"  - to remove selected vehicle from this warehouse ");
+		System.out.println(" \"e\"  - to edit selected vehicle in this warehouse");
+		System.out.println(" \"f\"  - to prepare the file with selected vehicle");
+		System.out.println(" \"b\"  - to go back");
 		System.out.println();
 		System.out.print(">> Your choice : ");
 	}	
@@ -203,6 +256,41 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		}		
 	}	
 	
+	private void sendTheVehicleToTheFile(Scanner input){
+		if( myVehicle.size() > 0) {	
+			System.out.println();
+			System.out.println("==============================================================");
+			int choice = MyScan.scanInt(input, "Give the vehicle number you want to send to the file : ");
+			System.out.println("==============================================================");
+		
+			if(( choice > 0 ) && ( choice <= myVehicle.size() )) {
+				try {
+					myVehicle.get(choice-1).sendToTheFile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else{
+				System.out.println();
+				System.out.println(" >> No vehicle with the given number was found << ");			
+			}
+			input.nextLine();
+			MyView.waitUntil(input);	
+		}
+		else {
+			System.out.println();
+			System.out.println("---------------------------------------------------");
+			System.out.println("-- You do not have any Vehicle in this warehouse --");
+			System.out.println("---------------------------------------------------");
+			MyView.waitUntil(input);
+		}
+		
+	}
+	
+	
+	
+	
+	
 	public  long getTotalPower() {
 		long totalPower=0;
 		for(Vehicle x : myVehicle) {
@@ -227,6 +315,27 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 	public   int getMyVehicleSize() {
 		return myVehicle.size();
 	}
+	
+	public int calculateCarsNumber() {
+		int carsNumber = 0;
+		
+		for(int i=0; i < myVehicle.size(); i++) {
+			if( myVehicle.get(i) instanceof Car) carsNumber++;
+		}
+		
+		return carsNumber;
+	}
+	
+	public int calculateMotorcyclesNumber() {
+		
+		int motorcyclesNumber=0;
+		for(int i=0; i < myVehicle.size(); i++) {
+			if( myVehicle.get(i) instanceof Car) motorcyclesNumber++;
+		}
+		return motorcyclesNumber;
+	}
+	
+	
 	static {
 		ID2=0;
 	}

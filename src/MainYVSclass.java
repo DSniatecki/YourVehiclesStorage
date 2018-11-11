@@ -25,24 +25,7 @@ public class MainYVSclass {
 	
 	private static void startTheProgram(){
 		MyView.clearScreen(input);                        
-		System.out.println(" _____________________________________________________________________ ");
-		System.out.println("|  _________________________________________________________________  |");
-		System.out.println("| |                                                                 | |");
-		System.out.println("| |                 \" YOUR VEHICLES STORAGE V1.0\"                   | |");
-		System.out.println("| |                                                                 | |");
-		System.out.println("| |      ____________________________________________________       | |");	
-		System.out.println("| |     /                                                    \\      | |");
-		System.out.println("| |    /                                                      \\     | |");
-		System.out.println("| |   /________________________________________________________\\    | |");
-		System.out.println("| |     |_|___|___|___|___|___|___|___|___|___|___|____|___|_|      | |");
-		System.out.println("| |     |___|                   |___|                    |___|      | |");
-		System.out.println("| |     |_|_|                   |_|_|                    |_|_|      | |");
-		System.out.println("| |     |___|                   |___|                    |___|      | |");
-		System.out.println("| |     |_|_|___________________|_|_|____________________|_|_|      | |");
-		System.out.println("| |                                                                 | |");
-		System.out.println("| |                                                                 | |");
-		System.out.println("| |_________________________________________________________________| |");
-		System.out.println("|_____________________________________________________________________|");		
+		showLogo(100);
 		System.out.println("");		
 		System.out.println("                 [ !!! Welcome in the program  !!! ]                  ");
 		MyView.waitUntil(input, "                    [ Press \"enter\" to continue ] ");
@@ -60,4 +43,48 @@ public class MainYVSclass {
 	
 	}
 
+	private static void showLogo(int sleepTime) {
+		
+		try {
+			System.out.println(" _____________________________________________________________________ ");
+			Thread.sleep(sleepTime);
+			System.out.println("|  _________________________________________________________________  |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |                                                                 | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |                 \" YOUR VEHICLES STORAGE V1.0\"                   | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |                                                                 | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |      ____________________________________________________       | |");	
+			Thread.sleep(sleepTime);
+			System.out.println("| |     /                                                    \\      | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |    /                                                      \\     | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |   /________________________________________________________\\    | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |     |_|___|___|___|___|___|___|___|___|___|___|____|___|_|      | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |     |___|                   |___|                    |___|      | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |     |_|_|                   |_|_|                    |_|_|      | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |     |___|                   |___|                    |___|      | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |     |_|_|___________________|_|_|____________________|_|_|      | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |                                                                 | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |                                                                 | |");
+			Thread.sleep(sleepTime);
+			System.out.println("| |_________________________________________________________________| |");
+			Thread.sleep(sleepTime);
+			System.out.println("|_____________________________________________________________________|");		
+			Thread.sleep(sleepTime);		
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
