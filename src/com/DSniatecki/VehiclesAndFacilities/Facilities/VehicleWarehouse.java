@@ -330,7 +330,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		
 		int motorcyclesNumber=0;
 		for(int i=0; i < myVehicle.size(); i++) {
-			if( myVehicle.get(i) instanceof Car) motorcyclesNumber++;
+			if( myVehicle.get(i) instanceof Motorcycle) motorcyclesNumber++;
 		}
 		return motorcyclesNumber;
 	}
