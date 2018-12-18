@@ -299,6 +299,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 			System.out.println("--------------------------------------------------------------");
 			System.out.println("         - \"brand\"         -\"production year\" ");       
 			System.out.println("         - \"power\"         -\"mileage\" ");      
+			System.out.println("         - \"weight\"        -\"engine capacity\" ");      
 			System.out.println("--------------------------------------------------------------");
 			System.out.print("Your choice : ");
 			userChoice = MyScan.scanString(input);
@@ -310,6 +311,8 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 				case "production year" :   this.sortVehiclesByProductionYear(); 	break;
 				case "power" :  		   this.sortVehiclesByPower();				break;
 				case "mileage" :           this.sortVehiclesByMileage();            break;
+				case "weight" :            this.sortVehiclesByWeight();             break;
+				case "engine capacity" :   this.sortVehiclesByEngineCapacity();     break;
 				default:  
 					showComunicate = false;
 					System.out.println("[ vehicles can not be sorted according to the given parameter  ]");
@@ -380,9 +383,33 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		myVehicle.sort(myVehicleComparator);
 	}
 	
+	private void sortVehiclesByEngineCapacity(){
+		Comparator<Vehicle> myVehicleComparator;
+		
+		myVehicleComparator = new Comparator<Vehicle>() {
+			public int compare(Vehicle V1, Vehicle V2) {
+				if(V1.getEngineCapacity() > V2.getEngineCapacity()) 			 return 1;
+				else if(V1.getEngineCapacity() < V2.getEngineCapacity()) 		 return -1;
+				else															 return 0;
+			}
+		}.reversed();
+		
+		myVehicle.sort(myVehicleComparator);
+	}
 	
-	
-	
+	private void sortVehiclesByWeight(){
+		Comparator<Vehicle> myVehicleComparator;
+		
+		myVehicleComparator = new Comparator<Vehicle>() {
+			public int compare(Vehicle V1, Vehicle V2) {
+				if(V1.getWeight() > V2.getWeight()) 			 return 1;
+				else if(V1.getWeight() < V2.getWeight()) 		 return -1;
+				else									     	 return 0;
+			}
+		};
+		
+		myVehicle.sort(myVehicleComparator);
+	}
 	
 	
 	public  long getTotalPower() {

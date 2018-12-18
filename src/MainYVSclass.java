@@ -52,7 +52,7 @@ public class MainYVSclass {
 			Thread.sleep(sleepTime);
 			System.out.println("| |                                                                 | |");
 			Thread.sleep(sleepTime);
-			System.out.println("| |                 \" YOUR VEHICLES STORAGE V1.0\"                   | |");
+			System.out.println("| |                 \" YOUR VEHICLES STORAGE V2.0\"                   | |");
 			Thread.sleep(sleepTime);
 			System.out.println("| |                                                                 | |");
 			Thread.sleep(sleepTime);
