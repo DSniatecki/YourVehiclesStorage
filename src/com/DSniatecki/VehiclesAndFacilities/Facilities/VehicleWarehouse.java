@@ -3,6 +3,7 @@ package com.DSniatecki.VehiclesAndFacilities.Facilities;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import com.DSniatecki.VehiclesAndFacilities.Vehicles.Car;
@@ -33,7 +34,6 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		this.adress = adress;
 	}
 
-	
 	public  void showInfo(int storageNumber) {
 		System.out.println();
 		System.out.println("==============================================================");
@@ -73,6 +73,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 				case "m" :			addMotorcycle(input);						break;
 				case "r" :			removeVehicle(input);						break;
 				case "e" :			editVehicle(input);							break;
+				case "SV":          sortVehicles(input);                        break;
 				case "b" :														break;
 				
 				default  :
@@ -210,6 +211,7 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		System.out.println(" \"r\"  - to remove selected vehicle from this warehouse ");
 		System.out.println(" \"e\"  - to edit selected vehicle in this warehouse");
 		System.out.println(" \"f\"  - to prepare the file with selected vehicle");
+		System.out.println(" \"SV\" - to sort vehicles by selected parametr  ");
 		System.out.println(" \"b\"  - to go back");
 		System.out.println();
 		System.out.print(">> Your choice : ");
@@ -286,6 +288,98 @@ public final class VehicleWarehouse implements Serializable, VehicleWarehousable
 		}
 		
 	}
+	
+	
+	private void sortVehicles(Scanner input) {
+		if( myVehicle.size() > 0) {	
+			String userChoice;                      boolean showComunicate = true;
+			System.out.println();
+			System.out.println("==============================================================");
+			System.out.println("           Select the parametr to sort vehicles :");
+			System.out.println("--------------------------------------------------------------");
+			System.out.println("         - \"brand\"         -\"production year\" ");       
+			System.out.println("         - \"power\"         -\"mileage\" ");      
+			System.out.println("--------------------------------------------------------------");
+			System.out.print("Your choice : ");
+			userChoice = MyScan.scanString(input);
+			System.out.println("--------------------------------------------------------------");
+			System.out.println();
+			
+			switch(userChoice) {
+				case "brand" :             this.sortVehiclesByBrand();	  			break;
+				case "production year" :   this.sortVehiclesByProductionYear(); 	break;
+				case "power" :  		   this.sortVehiclesByPower();				break;
+				case "mileage" :           this.sortVehiclesByMileage();            break;
+				default:  
+					showComunicate = false;
+					System.out.println("[ vehicles can not be sorted according to the given parameter  ]");
+			}	
+			if(showComunicate) System.out.println("[ vehicle has been properly sorted by : " + userChoice + " ]");
+			MyView.waitUntil(input);
+		} else {
+			System.out.println();
+			System.out.println("---------------------------------------------------");
+			System.out.println("-- You do not have any Vehicle in this warehouse --");
+			System.out.println("---------------------------------------------------");
+			MyView.waitUntil(input);
+		}
+		
+	}
+	
+	private void sortVehiclesByBrand(){
+		Comparator<Vehicle> myVehicleComparator;
+		
+		myVehicleComparator = new Comparator<Vehicle>() {
+			public int compare(Vehicle V1, Vehicle V2) {
+				return V1.getBrand().compareTo(V2.getBrand());
+			}
+		};
+		
+		myVehicle.sort(myVehicleComparator);
+	}
+	
+	private void sortVehiclesByProductionYear(){
+		Comparator<Vehicle> myVehicleComparator;
+		
+		myVehicleComparator = new Comparator<Vehicle>() {
+			public int compare(Vehicle V1, Vehicle V2) {
+				if(V1.getProductionYear() > V2.getProductionYear()) 			 return 1;
+				else if(V1.getProductionYear() < V2.getProductionYear()) 		 return -1;
+				else															 return 0;
+			}
+		}.reversed();
+		
+		myVehicle.sort(myVehicleComparator);
+	}
+	
+	private void sortVehiclesByPower(){
+		Comparator<Vehicle> myVehicleComparator;
+		
+		myVehicleComparator = new Comparator<Vehicle>(){
+			public int compare(Vehicle V1, Vehicle V2) {
+				if(V1.getPower() > V2.getPower()) 			 return 1;
+				else if(V1.getPower() < V2.getPower()) 		 return -1;
+				else										 return 0;
+			}
+		}.reversed();
+		
+		myVehicle.sort(myVehicleComparator);
+	}
+	
+	private void sortVehiclesByMileage(){
+		Comparator<Vehicle> myVehicleComparator;
+		
+		myVehicleComparator = new Comparator<Vehicle>() {
+			public int compare(Vehicle V1, Vehicle V2) {
+				if(V1.getMileage() > V2.getMileage()) 			 return 1;
+				else if(V1.getMileage() < V2.getMileage()) 		 return -1;
+				else										 return 0;
+			}
+		};
+		
+		myVehicle.sort(myVehicleComparator);
+	}
+	
 	
 	
 	
